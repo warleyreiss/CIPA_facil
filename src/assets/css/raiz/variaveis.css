@@ -1,0 +1,361 @@
+/* ============================================================
+   RAIZ — Design tokens (ideia_css + aliases legados)
+   Sharp edges · border hierarchy · no shadow
+   ============================================================ */
+
+:root {
+  /* principais */
+  --primary-color:#2563eb;
+  --background-gradiente: linear-gradient(165deg, #0f172a 0%, #1e3a5f 42%, #1d4ed8 100%);
+  /* ── Accent da marca (tokens legados --green apontam para azul) ── */
+  --green: #2563eb;
+  --green-hover: #1d4ed8;
+  --green-deep: #1e3a8a;
+  --green-ghost: #eff6ff;
+  --green-soft: #dbeafe;
+  --green-line: #bfdbfe;
+  --green-muted: #93c5fd;
+
+  /* ── Neutrals ── */
+  --white: #ffffff;
+  --canvas: #f4f6f9;
+  --surface: #ffffff;
+  --surface-2: #f7f8fa;
+  --surface-3: #eff1f5;
+  --surface-hover: #eef3f7;
+  --border: #dde1ea;
+  --border-hover: #b8c0ce;
+  --border-strong: #c4cbd8;
+
+  /* ── Text ── */
+  --text-1: #141921;
+  --text-2: #3d4554;
+  --text-3: #64718a;
+  --text-4: #9aa3b5;
+
+  /* ── Semantic ── */
+  --danger: #dc2626;
+  --danger-soft: #fef2f2;
+  --danger-line: #fca5a5;
+  --warning: #d97706;
+  --warning-soft: #fffbf0;
+  --warning-line: #fcd34d;
+  --info: #0369a1;
+  --info-soft: #f0f9ff;
+  --info-line: #93c5fd;
+  --success: #16a34a;
+  --success-soft: #f0fdf4;
+
+  /* ── Form (ideia) ── */
+  --fh: 2.25rem;
+  --btn-h: 1.75rem;
+  --btn-h-sm: 1.5rem;
+  --btn-h-xs: 1.25rem;
+  --btn-fs: 0.75rem;
+  --btn-fs-sm: 0.75rem;
+  --btn-icon: 0.8125rem;      /* ícone em botão padrão */
+  --btn-icon-sm: 0.75rem;      /* ícone em botão sm / icon-sm */
+  --btn-icon-xs: 0.625rem;     /* ícone em botão xs / ações densas */
+  --btn-secondary-bg: var(--surface);
+  --btn-secondary-border: #9aa3b5;
+  --btn-secondary-text: #1f2937;
+  --btn-secondary-hover: #eef0f4;
+  --input-icon-strip-w: 2.25rem;
+  --input-icon-size: 1.125rem;
+  --ffs: 0.8125rem;
+  --fls: 0.6875rem;
+  --ft: 150ms ease;
+  --fg: 0.2rem;
+  --fr: 3px;
+
+  /* ── Spacing ── */
+  --sp-1: 0.25rem;
+  --sp-2: 0.375rem;
+  --sp-3: 0.5rem;
+  --sp-4: 0.625rem;
+  --sp-5: 0.75rem;
+  --sp-6: 0.875rem;
+  --sp-7: 1rem;
+
+  /* ── Raio único ── */
+  --radius: var(--fr);
+  --border-radius: var(--fr);
+
+  /* ── Marca (sidebar/cabeçalho app — preservar) ── */
+  --brand-green: var(--green);
+  --brand-green-hover: var(--green-hover);
+  --brand-green-light: #60a5fa;
+  --brand-green-muted: var(--green-soft);
+  --brand-green-ghost: var(--green-ghost);
+  --brand-green-line: var(--green-line);
+  --brand-navy: #162b46;
+  --brand-navy-sidebar: #2a4054;
+  --color-on-accent: #ffffff;
+
+  /* ── Escala compacta (legado) ── */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 10px;
+  --space-6: 12px;
+  --space-7: 14px;
+  --space-8: 16px;
+
+  /* ── Tipografia ── */
+  --font-xs: var(--fls);
+  --font-sm: 0.75rem;
+  --font-base: var(--ffs);
+  --font-md: 0.875rem;
+  --font-lg: 1rem;
+  --transition: var(--ft);
+
+  /* ── Canvas & superfícies (aliases) ── */
+  --fundo-background: var(--canvas);
+  --surface-canvas: var(--canvas);
+  --surface-base: var(--surface);
+  --surface-muted: var(--surface-2);
+  --surface-inset: var(--surface-3);
+  --border-default: var(--border);
+  --border-subtle: var(--surface-3);
+  --text-primary: var(--text-1);
+  --text-secondary: var(--text-2);
+  --text-tertiary: var(--text-3);
+
+  /* ── Sidebar app (intocável) ── */
+  --fundo-sidebar: var(--brand-navy-sidebar);
+  --fundo-logo: var(--brand-navy);
+  --fundo-botoes-destaque: #2563eb2e;
+  --textos: #9ca3af;
+  --textos-hover: #60a5fa;
+  --textos-ativos: #ffffff;
+  --fundo-botoes: transparent;
+  --fundo-botoes-hover: #323e50;
+  --fundo-botoes-ativos: #ffffff10;
+  --card-assinatura: rgba(0, 0, 0, 0.15);
+
+  /* ── Header app (intocável) ── */
+  --fundo-header: var(--brand-green-light);
+  --indicador-card: var(--brand-green);
+  --fundo-botoes-card: #e2e8f0;
+  --text-botoes-card: #64748b;
+  --text-subtitulo-card: #2c2c2c;
+  --text-titulo-card: #1e293b;
+  --fundo-card-hover: #ffffff59;
+  --fundo-botoes-card-hover: var(--brand-green);
+  --text-botoes-card-hover: #ffffff;
+  --fundo-card-user: #ffffff38;
+  --fundo-user: #334155;
+  --cabecalho-altura: 48px;
+
+  /* ── Semânticas legado ── */
+  --color-primary: #3b6fd4;
+  --color-primary-dark: #2f5bb5;
+  --color-primary-soft: #e8effb;
+  --color-success: var(--success);
+  --color-success-dark: #15803d;
+  --color-success-soft: #dcfce7;
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-orange: var(--warning);
+  --color-orange-soft: var(--warning-soft);
+  --color-secondary: var(--text-secondary);
+  --color-secondary-soft: var(--surface-muted);
+
+  /* ── Tabelas (neutras — verde só em CTA/status pontual) ── */
+  --background-pasta: #4a5568;
+  --table-border: #e5e7eb;
+  --table-border-light: #eef0f3;
+  --table-head-bg: #f3f4f6;
+  --table-head-text: #4b5563;
+  --table-row-hover: #f3f4f6;
+  --table-row-selected: #eef2f7;
+  --table-row-stripe: #fafafa;
+  --table-frozen-shadow: -1px 0 0 0 var(--border);
+
+  /* aliases legado ── */
+  --table-bg: var(--surface);
+  --table-surface: var(--surface);
+  --table-header-bg: var(--table-head-bg);
+  --table-header-text: var(--table-head-text);
+  --table-text: var(--text-1);
+  --table-text-muted: var(--text-2);
+  --table-text-light: var(--text-3);
+  --table-accent: var(--green);
+  --table-accent-hover: var(--green-hover);
+  --table-accent-soft: var(--green-ghost);
+  --table-radius: var(--fr);
+  --table-radius-sm: var(--fr);
+  --table-shadow: none;
+  --table-toolbar-bg: var(--surface);
+  --table-font-size: var(--ffs);
+  --table-header-font-size: 0.75rem;
+  --table-cell-padding-x: var(--sp-4);
+  --table-cell-padding-y: 0.375rem;
+  --table-header-padding-y: 0.3125rem;
+  --table-status-tag-w: 5.25rem;
+  --table-toolbar-gap: var(--sp-3);
+  --table-toolbar-height: 32px;
+  --table-transition: var(--ft);
+  --table-tab-bg: #4a5568;
+  --color-bg: var(--table-bg);
+  --background-thead: var(--table-header-bg);
+  --color-border: var(--table-border);
+  --color-border-light: var(--table-border-light);
+  --color-text: var(--table-text);
+  --color-text-muted: var(--table-text-muted);
+  --color-text-light: var(--table-text-light);
+
+  /* ── Formulários (aliases) ── */
+  --form-surface: var(--surface);
+  --form-canvas: var(--canvas);
+  --form-border: var(--border);
+  --form-border-hover: var(--border-hover);
+  --form-border-light: var(--surface-3);
+  --form-border-focus: var(--green);
+  --form-text: var(--text-1);
+  --form-text-muted: var(--text-2);
+  --form-text-light: var(--text-3);
+  --form-accent: var(--green);
+  --form-accent-hover: var(--green-hover);
+  --form-accent-soft: var(--green-ghost);
+  --form-danger-soft: var(--danger-soft);
+  --form-danger: var(--danger);
+  --form-warning-soft: var(--warning-soft);
+  --status-pendente: #f59e0b;
+  --status-pendente-contrast: #ffffff;
+  --status-pendente-soft: rgba(245, 158, 11, 0.14);
+  --form-radius: var(--fr);
+  --form-radius-sm: var(--fr);
+  --form-radius-card: 10px;
+  --form-input-h: var(--fh);
+  --form-font-size: var(--ffs);
+  --form-label-size: var(--fls);
+  --form-field-gap: var(--fg);
+  --float-label-gap: 0.35rem;
+  --float-control-h: 2.4rem;
+  --form-footer-h: 48px;
+  --form-shadow: none;
+  --form-transition: var(--ft);
+  --f-brand: var(--form-accent);
+  --f-brand-hover: var(--form-accent-hover);
+  --f-brand-soft: var(--form-accent-soft);
+  --f-bg-surface: var(--form-surface);
+  --f-bg-canvas: var(--form-canvas);
+  --f-border-subtle: var(--form-border);
+  --f-text-main: var(--form-text);
+  --f-text-muted: var(--form-text-muted);
+  --f-text-light: var(--form-text-light);
+  --f-input-h: var(--form-input-h);
+  --f-fs-base: var(--form-font-size);
+  --f-fs-label: var(--form-label-size);
+  --f-shadow-subtle: none;
+  --f-transition: var(--form-transition);
+  --radius-md: var(--fr);
+
+  /* ── Elevação (app — sutil, foco em borda) ── */
+  --shadow-none: none;
+  --shadow-sm: none;
+  --shadow-md: none;
+  --cepi-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --cepi-shadow-md: 0 8px 24px rgba(15, 23, 42, 0.07);
+  --cepi-shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.1);
+  --cepi-shadow-modal: 0 24px 56px rgba(15, 23, 42, 0.16);
+  --cepi-ring: 0 0 0 3px color-mix(in srgb, var(--green) 22%, transparent);
+  --elevation-border: 1px solid var(--border);
+
+  /* ── PrimeReact Lara bridge ── */
+  --primary-color: var(--green);
+  --primary-color-text: #ffffff;
+  --highlight-bg: var(--green-ghost);
+  --highlight-text-color: var(--green-hover);
+  --focus-ring: 0 0 0 1px var(--green-line);
+  --surface-ground: var(--canvas);
+  --surface-section: var(--surface);
+  --surface-card: var(--surface);
+  --surface-overlay: var(--surface);
+  --surface-border: var(--border);
+  --text-color: var(--text-1);
+  --text-color-secondary: var(--text-2);
+  --content-padding: var(--sp-6);
+  --inline-spacing: var(--sp-4);
+  --font-family: 'Inter', sans-serif;
+  --font-family-mono: 'SF Mono', 'Fira Code', 'Roboto Mono', ui-monospace, monospace;
+
+  /* Tooltips ghost */
+  --tooltip-ghost-bg: rgba(255, 255, 255, 0.82);
+  --tooltip-ghost-text: var(--text-1);
+  --tooltip-ghost-border: rgba(20, 25, 33, 0.1);
+  --tooltip-ghost-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+}
+
+/* ── Modo escuro ── */
+html[data-theme='dark'] {
+  color-scheme: dark;
+
+  --canvas: #0f1419;
+  --surface: #1a222d;
+  --surface-2: #222b38;
+  --surface-3: #151c26;
+  --border: #2e3a4a;
+  --border-hover: #3d4d62;
+  --border-strong: #3d4d62;
+  --btn-secondary-bg: #1e2733;
+  --btn-secondary-border: #5a6b82;
+  --btn-secondary-text: #e8eef6;
+  --btn-secondary-hover: #2a3545;
+  --text-1: #e8edf4;
+  --text-2: #9aa8ba;
+  --text-3: #6b7a8f;
+  --text-4: #6b7a8f;
+
+  --green-ghost: rgba(37, 99, 235, 0.18);
+  --danger-soft: rgba(214, 69, 69, 0.14);
+  --warning-soft: rgba(201, 138, 26, 0.14);
+
+  --fundo-background: var(--canvas);
+  --surface-canvas: var(--canvas);
+  --surface-base: var(--surface);
+  --surface-muted: var(--surface-2);
+  --surface-inset: var(--surface-3);
+  --border-default: var(--border);
+  --border-subtle: var(--surface-3);
+  --text-primary: var(--text-1);
+  --text-secondary: var(--text-2);
+  --text-tertiary: var(--text-3);
+
+  --fundo-header: #1e293b;
+  --fundo-botoes-card: #334155;
+  --text-botoes-card: #94a3b8;
+  --text-subtitulo-card: #94a3b8;
+  --text-titulo-card: #f1f5f9;
+  --fundo-card-hover: rgba(255, 255, 255, 0.08);
+  --fundo-card-user: rgba(255, 255, 255, 0.1);
+  --fundo-user: #0f1419;
+
+  --table-tab-bg: #3d4d62;
+  --table-border: #2e3a4a;
+  --table-border-light: #243041;
+  --table-head-bg: #1e2733;
+  --table-head-text: #9aa8ba;
+  --table-row-hover: rgba(255, 255, 255, 0.04);
+  --table-row-selected: rgba(255, 255, 255, 0.07);
+  --table-row-stripe: #1a222d;
+  --form-accent-soft: rgba(37, 99, 235, 0.18);
+  --highlight-bg: rgba(37, 99, 235, 0.22);
+
+  --tooltip-ghost-bg: rgba(30, 40, 54, 0.86);
+  --tooltip-ghost-border: rgba(255, 255, 255, 0.1);
+  --tooltip-ghost-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+}
+
+html[data-theme='dark'] .home-section,
+html[data-theme='dark'] .home-section .content-area {
+  background: var(--fundo-background);
+}
+
+html[data-theme='dark'] .main_header_reinvented {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.35);
+}

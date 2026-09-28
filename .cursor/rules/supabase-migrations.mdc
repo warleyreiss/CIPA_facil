@@ -1,0 +1,13 @@
+---
+description: Como aplicar migrations do Supabase na CIPA Fácil
+alwaysApply: true
+---
+
+# Migrations do Supabase
+
+- Toda migration nova vai em `supabase/migrations/AAAAMMDDHHMMSS_nome.sql`. Nunca edite uma migration já aplicada; crie outra.
+- Aplique sempre pelo CLI, com `.\scripts\supabase-cipa.ps1 push` (rode `status` antes para conferir o projeto linkado). Não rode `supabase db push` direto.
+- O único projeto permitido é o da CIPA Fácil: `nxkrjgcieppggcoxyjbg` (em `supabase/projeto-remoto.txt`).
+- Nunca envie nada para o Controle EPI (`ndcpitpvaphhwoidcdhs`) nem para o ValidaEPI (`jqbbwkwudeplgxmsgtny`).
+- Se o push falhar por login ou permissão (403, projeto ausente em `supabase projects list`), pare e peça ao usuário para rodar `supabase login` com a conta da CIPA. Não tente outra conta, não peça senha no chat e não mande SQL para o provedor como primeira opção.
+- Só gere arquivo para o SQL Editor quando o usuário pedir ou quando o CLI estiver bloqueado, e avise que é um contorno.

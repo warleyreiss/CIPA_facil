@@ -1,0 +1,176 @@
+.editor-ata {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.editor-ata:focus-within {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px var(--green-soft);
+}
+
+.editor-ata.is-leitura {
+  background: var(--surface-2);
+}
+
+.editor-ata.is-leitura:focus-within {
+  border-color: var(--border);
+  box-shadow: none;
+}
+
+.editor-ata__ferramentas {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 6px;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+.editor-ata__grupo {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding-right: 6px;
+  border-right: 1px solid var(--border);
+}
+
+.editor-ata__grupo:last-of-type {
+  border-right: 0;
+}
+
+.editor-ata__ferramentas select {
+  height: 30px;
+  padding: 0 6px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text-1);
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.editor-ata__tamanho {
+  width: 62px;
+}
+
+.editor-ata__botao {
+  display: inline-grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-2);
+  cursor: pointer;
+}
+
+.editor-ata__botao:hover:not(:disabled) {
+  background: var(--surface-3);
+  color: var(--text-1);
+}
+
+.editor-ata__botao.is-ativo {
+  background: var(--green-soft);
+  color: var(--green-deep);
+}
+
+.editor-ata__botao:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.editor-ata__roteiro {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  margin-left: auto;
+  padding: 0 10px;
+  border: 1px dashed var(--green-line);
+  border-radius: 6px;
+  background: var(--green-ghost);
+  color: var(--green-deep);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.editor-ata__roteiro:hover {
+  border-style: solid;
+}
+
+.editor-ata .tiptap {
+  min-height: 320px;
+  padding: 18px 22px;
+  color: var(--text-1);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  outline: none;
+}
+
+.editor-ata.is-leitura .tiptap {
+  min-height: 0;
+}
+
+.editor-ata .tiptap > * + * {
+  margin-top: 0.6em;
+}
+
+.editor-ata .tiptap p {
+  margin: 0;
+}
+
+.editor-ata .tiptap h2 {
+  margin: 0.9em 0 0.3em;
+  font-size: 1.3rem;
+}
+
+.editor-ata .tiptap h3 {
+  margin: 0.8em 0 0.2em;
+  font-size: 1.08rem;
+}
+
+.editor-ata .tiptap ul,
+.editor-ata .tiptap ol {
+  margin: 0;
+  padding-left: 1.4em;
+}
+
+.editor-ata .tiptap blockquote {
+  margin: 0;
+  padding: 6px 12px;
+  border-left: 3px solid var(--green-line);
+  background: var(--green-ghost);
+  color: var(--text-2);
+}
+
+.editor-ata .tiptap p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  color: var(--text-4);
+  pointer-events: none;
+}
+
+html[data-theme='dark'] .editor-ata .tiptap blockquote {
+  background: color-mix(in srgb, var(--green) 12%, transparent);
+}
+
+@media (max-width: 640px) {
+  .editor-ata__roteiro {
+    margin-left: 0;
+  }
+
+  .editor-ata .tiptap {
+    padding: 14px;
+  }
+}

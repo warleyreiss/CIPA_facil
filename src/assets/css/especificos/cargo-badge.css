@@ -1,0 +1,59 @@
+.cargo-badge {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  padding: 0.08rem 0.42rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.cargo-badge--presidente {
+  background: #1e3a8a;
+  color: #fff;
+}
+
+.cargo-badge--vice {
+  background: #2563eb;
+  color: #fff;
+}
+
+.cargo-badge--membro {
+  background: #eff6ff;
+  color: #1e3a8a;
+  border: 1px solid #bfdbfe;
+}
+
+.cargo-badge--suplente {
+  background: #fff;
+  color: #475569;
+  border: 1px dashed #94a3b8;
+}
+
+.membro-com-cargo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.membro-com-cargo > span,
+.membro-com-cargo > strong {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cepi-select-panel__item .membro-com-cargo,
+.ui-float-control .membro-com-cargo {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}

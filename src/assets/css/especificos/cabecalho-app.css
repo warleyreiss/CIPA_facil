@@ -1,0 +1,522 @@
+
+.header_island_container {
+  width: 100%;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.main_header_reinvented {
+  box-sizing: border-box;
+  height: var(--cabecalho-altura);
+  min-height: var(--cabecalho-altura);
+  max-height: var(--cabecalho-altura);
+  background: var(--fundo-header);
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.65rem 0 0.85rem;
+  gap: 0.75rem;
+  box-shadow: 0 4px 20px -2px rgba(16, 24, 40, 0.05);
+  overflow: hidden;
+}
+
+.divider {
+  min-height: 0%;
+}
+
+/* Pílula do projeto — altura menor que o header, centralizada */
+.project_scope_pill_hoverable {
+  --header-inner-h: calc(var(--cabecalho-altura) - 10px);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  height: var(--header-inner-h);
+  max-height: var(--header-inner-h);
+  padding: 0 0.45rem 0 0.4rem;
+  border-radius: var(--border-radius);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.pill_identity_block {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.pill_neon_indicator {
+  position: absolute;
+  left: 0;
+  top: 18%;
+  height: 64%;
+  width: 2px;
+  background: var(--indicador-card);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  box-shadow: 0 0 6px var(--indicador-card);
+}
+
+.pill_project_img,
+.pill_project_icon_avatar {
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  border-radius: var(--border-radius);
+}
+
+.pill_project_img {
+  object-fit: cover;
+  /* Fundo sólido sob logos com transparência (evita o verde do header “vazar”) */
+  background:
+    linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%);
+  border: 1px solid color-mix(in srgb, var(--text-titulo-card) 12%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, #fff 40%, transparent) inset;
+}
+
+.pill_project_icon_avatar {
+  background: var(--fundo-botoes-card);
+  color: var(--text-botoes-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+}
+
+.pill_text_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.05rem;
+  min-width: 0;
+  line-height: 1.15;
+}
+
+.pill_subtitle {
+  font-size: 0.5625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-subtitulo-card);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.pill_title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-titulo-card);
+  max-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.15;
+}
+
+.pill_hidden_actions {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  max-width: 0;
+  opacity: 0;
+  margin-left: 0;
+  transform: scale(0.92);
+  transition: max-width 0.2s ease, opacity 0.2s ease, margin-left 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+.project_scope_pill_hoverable:hover {
+  background: var(--fundo-card-hover);
+  border-color: rgba(37, 99, 235, 0.4);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08);
+}
+
+.project_scope_pill_hoverable:hover .pill_hidden_actions {
+  max-width: 4.5rem;
+  opacity: 1;
+  margin-left: 0.45rem;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+/* Touch / sem hover fino: ações sempre visíveis na pill (tablet; mobile esconde — ver regra ≤767) */
+@media (hover: none), (max-width: 1023px) {
+  .project_scope_pill_hoverable .pill_hidden_actions {
+    max-width: 4.5rem;
+    opacity: 1;
+    margin-left: 0.45rem;
+    transform: scale(1);
+    pointer-events: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .project_scope_pill_hoverable .pill_hidden_actions {
+    display: none !important;
+    max-width: 0 !important;
+    opacity: 0 !important;
+    margin-left: 0 !important;
+    pointer-events: none !important;
+  }
+}
+
+.action_micro_btn {
+  box-sizing: border-box;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: var(--border-radius);
+  border: 1px solid color-mix(in srgb, var(--text-titulo-card) 22%, transparent);
+  background: color-mix(in srgb, #fff 55%, transparent);
+  color: var(--text-titulo-card);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.65rem;
+  line-height: 1;
+  padding: 0;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.action_micro_btn:hover,
+.action_micro_btn.setup_btn:hover {
+  background: var(--fundo-botoes-card-hover);
+  color: #fff;
+  border-color: var(--fundo-botoes-card-hover);
+  transform: none;
+}
+
+/* Perfil da direita */
+.profile_biometric_card {
+  --header-inner-h: calc(var(--cabecalho-altura) - 10px);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: var(--header-inner-h);
+  max-height: var(--header-inner-h);
+  cursor: pointer;
+  padding: 0 0.4rem 0 0.55rem;
+  border-radius: var(--border-radius);
+  transition: background 0.15s ease;
+  background-color: var(--fundo-card-user);
+  overflow: hidden;
+}
+
+.profile_biometric_card:hover {
+  background: var(--fundo-card-hover);
+}
+
+.profile_info_strings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.05rem;
+  text-align: right;
+  line-height: 1.15;
+  min-width: 0;
+  flex: 1;
+}
+
+.profile_welcome {
+  font-size: 0.5625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #1e293b;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.profile_name_string {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-subtitulo-card);
+  line-height: 1.15;
+  max-width: 9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Foto do usuário — mesmo tratamento visual da logo do projeto (esquerda) */
+.profile_photo_slot {
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  line-height: 0;
+}
+
+.profile_photo_img {
+  width: 2rem;
+  height: 2rem;
+  display: block;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  /* Fundo sólido sob logos/fotos com transparência (evita o verde do header “vazar”) */
+  background:
+    linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%);
+  border: 1px solid color-mix(in srgb, var(--text-titulo-card) 12%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, #fff 40%, transparent) inset;
+  box-sizing: border-box;
+}
+
+.profile_photo_fallback {
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--border-radius);
+  background: var(--fundo-botoes-card);
+  color: var(--text-botoes-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 1px solid color-mix(in srgb, var(--text-titulo-card) 12%, transparent);
+  box-sizing: border-box;
+}
+
+.profile_avatar_btn {
+  --header-inner-h: calc(var(--cabecalho-altura) - 10px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: var(--header-inner-h);
+  width: var(--header-inner-h);
+  padding: 0;
+  border: none;
+  border-radius: var(--border-radius);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.profile_avatar_btn:hover {
+  background: var(--fundo-card-hover);
+}
+
+.profile_avatar_btn:focus-visible {
+  outline: 2px solid var(--brand-green, #2563eb);
+  outline-offset: 2px;
+}
+
+.profile_biometric_card--full {
+  display: flex;
+}
+
+.btn_menu_mobile_trigger {
+  background: transparent !important;
+  border: none !important;
+  color: #475569 !important;
+  font-size: 1.25rem;
+  padding: 0;
+  margin-right: 8px;
+}
+
+#popup_reinvented {
+  border-radius: var(--border-radius) !important;
+  border: 1px solid #e2e8f0 !important;
+  padding: 6px !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+}
+
+#popup_reinvented .p-menuitem-link {
+  border-radius: var(--border-radius) !important;
+}
+
+#popup_reinvented .p-menuitem-disconnect .p-menuitem-link * {
+  color: #f43f5e !important;
+}
+
+.header_relogio {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  color: #0f172a;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0 0.35rem;
+  overflow: hidden;
+}
+
+.header_relogio_dia,
+.header_relogio_prazo {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.header_relogio_dia {
+  flex: 0 1 auto;
+  font-size: 0.78rem;
+  font-weight: 650;
+  text-transform: capitalize;
+}
+
+.header_relogio_prazo {
+  flex: 0 1 auto;
+  font-size: 0.75rem;
+  color: #1e3a8a;
+}
+
+@media (max-width: 720px) {
+  .header_relogio_dia {
+    font-size: 0.68rem;
+  }
+
+  .header_relogio_prazo {
+    display: none;
+  }
+}
+
+.header_left_capsule,
+.header_right_capsule {
+  display: flex;
+  align-items: center;
+  min-height: 0;
+}
+
+.header_left_capsule {
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+.header_right_capsule {
+  flex-shrink: 0;
+  gap: 0.85rem;
+}
+
+/* Ações do projeto no lado direito — renderizadas só no mobile via JSX */
+.header_project_actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  flex-shrink: 0;
+}
+
+.header_divider {
+  min-height: 0%;
+}
+
+.header_divider--desktop {
+  margin: 0 0.25rem;
+}
+
+/* Sino alinhado à altura interna do header */
+.header_right_capsule .central-alertas-trigger {
+  width: 1.75rem;
+  height: 1.75rem;
+  flex-shrink: 0;
+}
+
+.header_right_capsule .central-alertas-trigger__icon {
+  font-size: 0.95rem;
+}
+
+/* ── Tablet: perfil compacto (só avatar) ── */
+@media (max-width: 1023px) {
+  .profile_biometric_card--full {
+    display: none;
+  }
+
+  .profile_avatar_btn {
+    display: inline-flex;
+  }
+
+  .header_divider--desktop {
+    display: none;
+  }
+
+  .main_header_reinvented {
+    padding: 0 0.55rem 0 0.7rem;
+    gap: 0.4rem;
+  }
+
+  .pill_title {
+    max-width: 160px;
+  }
+}
+
+/* ── Mobile: só card projeto + avatar ── */
+@media (max-width: 767px) {
+  .main_header_reinvented {
+    padding: 0 0.4rem 0 0.5rem;
+    gap: 0.35rem;
+  }
+
+  .header_left_capsule {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .header_right_capsule {
+    gap: 0.35rem;
+  }
+
+  /* Troca/config vão para a direita via JSX */
+  .header_project_actions .action_micro_btn {
+    width: 1.55rem;
+    height: 1.55rem;
+    font-size: 0.7rem;
+  }
+
+  .project_scope_pill_hoverable {
+    flex: 1;
+    min-width: 0;
+    max-width: 100%;
+    padding: 0 0.3rem 0 0.3rem;
+  }
+
+  .pill_title {
+    max-width: none;
+    font-size: 0.8125rem;
+  }
+
+  .pill_text_wrapper {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .pill_identity_block {
+    min-width: 0;
+    flex: 1;
+    gap: 0.4rem;
+  }
+
+  .pill_project_img,
+  .pill_project_icon_avatar,
+  .profile_photo_slot,
+  .profile_photo_img,
+  .profile_photo_fallback {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .header_right_capsule .central-alertas-trigger {
+    width: 1.55rem;
+    height: 1.55rem;
+  }
+
+  .header_right_capsule .central-alertas-trigger__icon {
+    font-size: 0.85rem;
+  }
+
+  .profile_avatar_btn {
+    --header-inner-h: 1.75rem;
+    height: 1.75rem;
+    width: 1.75rem;
+  }
+}

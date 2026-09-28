@@ -1,0 +1,155 @@
+/* Shell do modal fullscreen de cadastro (FormCadastroLogin) */
+
+html:has(.landing-cadastro-panel.p-sidebar-visible),
+body:has(.landing-cadastro-panel.p-sidebar-visible),
+html:has(.p-sidebar-mask.p-sidebar-visible .landing-cadastro-panel),
+body:has(.p-sidebar-mask.p-sidebar-visible .landing-cadastro-panel) {
+  overflow: hidden !important;
+  height: 100%;
+}
+
+.landing-cadastro-panel.p-sidebar,
+.landing-cadastro-panel.cepi-sheet {
+  background: #ffffff !important;
+  border: none;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.landing-cadastro-panel--wizard.p-sidebar::before {
+  opacity: 0;
+}
+
+.landing-cadastro-close {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  z-index: 50;
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 3px;
+  background: #f8fafc;
+  color: #64748b;
+  cursor: pointer;
+  flex: none;
+  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.landing-cadastro-close:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #334155;
+  transform: scale(1.04);
+}
+
+.landing-cadastro-close:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* Prime (legado) + Sheet cepi — sem faixa de header no fullscreen de cadastro */
+.landing-cadastro-panel.p-sidebar .p-sidebar-header,
+.landing-cadastro-panel .p-sidebar-header,
+.landing-cadastro-panel .cepi-sheet__header {
+  display: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  overflow: hidden;
+}
+
+.landing-cadastro-panel .p-sidebar-close,
+.landing-cadastro-panel .cepi-sheet__close {
+  display: none !important;
+}
+
+.landing-cadastro-panel .p-sidebar-content,
+.landing-cadastro-panel .cepi-sheet__body {
+  position: relative;
+  z-index: 2;
+  display: flex !important;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex: 1 1 auto;
+  height: 100%;
+  max-height: 100%;
+  padding: 0 !important;
+  background: transparent !important;
+  overflow: hidden !important;
+}
+
+.landing-cadastro-panel .cepi-sheet__body > .landing-cadastro-close,
+.landing-cadastro-panel .p-sidebar-content > .landing-cadastro-close {
+  position: absolute;
+}
+
+.landing-cadastro-panel--wizard .p-sidebar-content > .cadastro-wizard,
+.landing-cadastro-panel--wizard .cepi-sheet__body > .cadastro-wizard,
+.landing-cadastro-panel--wizard .cadastro-wizard {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  height: 100%;
+  animation: landingCadastroIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes landingCadastroIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 960px) {
+  .landing-cadastro-panel.cepi-sheet,
+  .landing-cadastro-panel.p-sidebar {
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    min-height: 100dvh !important;
+    inset: 0 !important;
+    width: 100% !important;
+  }
+
+  .landing-cadastro-panel .cepi-sheet__body,
+  .landing-cadastro-panel .p-sidebar-content {
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+  }
+
+  .landing-cadastro-panel--wizard .landing-cadastro-close {
+    top: calc(0.65rem + env(safe-area-inset-top, 0px));
+    right: 0.75rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.22);
+    color: #fff;
+    backdrop-filter: blur(8px);
+  }
+
+  .landing-cadastro-panel--wizard .landing-cadastro-close:hover {
+    background: rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.35);
+    color: #fff;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-cadastro-panel--wizard .p-sidebar-content > .cadastro-wizard,
+  .landing-cadastro-panel--wizard .cepi-sheet__body > .cadastro-wizard,
+  .landing-cadastro-panel--wizard .cadastro-wizard {
+    animation: none;
+  }
+}

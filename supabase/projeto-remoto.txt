@@ -1,0 +1,5 @@
+# Ref do projeto Supabase DESTA conta (CIPA Fácil).
+# Deixe vazio até criar o projeto novo.
+# O script scripts/supabase-cipa.ps1 recusa db push enquanto isto estiver vazio
+# e recusa sempre o projeto do Controle EPI.
+REF=nxkrjgcieppggcoxyjbg

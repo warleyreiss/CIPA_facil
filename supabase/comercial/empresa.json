@@ -1,0 +1,21 @@
+{
+  "nome": "CIPA Fácil",
+  "marca": "CIPA Fácil",
+  "marcaCasa": "Proativa Web",
+  "titularLegal": "Warley Gonçalves dos Reis",
+  "razaoSocial": "Warley Gonçalves dos Reis",
+  "cnpj": "50.923.885/0001-79",
+  "emailSuporte": "contato@proativaweb.com.br",
+  "emailContato": "contato@proativaweb.com.br",
+  "emailRemetente": "CIPA Fácil <contato@proativaweb.com.br>",
+  "telefone": "(31) 99999-9999",
+  "website": "https://www.proativaweb.com.br",
+  "siteApp": "http://localhost:5173",
+  "rua": "Doze",
+  "numero": "536",
+  "cidade": "Esmeraldas",
+  "estado": "MG",
+  "cep": "32807-132",
+  "slogan": "Gestão da CIPA",
+  "logoUrl": "/favicon.svg"
+}

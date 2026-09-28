@@ -1,0 +1,13 @@
+# Checklist (sem segredos)
+generated=2026-09-13T15:53:33.8355746-03:00
+REACT_APP_SUPABASE_URL=https://jqbbwkwudeplgxmsgtny.supabase.co
+REACT_APP_SUPABASE_ANON_KEY set=True len=46 jwt=False
+REACT_APP_ADMIN_LOGIN_USER=Controle_EPI_Admin
+REACT_APP_ADMIN_AUTH_EMAIL=contato@proativaweb.com.br
+REACT_APP_APP_URL=https://controleepi.com
+REACT_APP_CAEPI_SUPABASE_URL=https://jqbbwkwudeplgxmsgtny.supabase.co
+REACT_APP_CAEPI_SUPABASE_ANON_KEY set=True len=46 jwt=False
+REACT_APP_CAEPI_SYNC_SECRET set=False len=0
+REACT_APP_CAEPI_SYNC_URL=https://jqbbwkwudeplgxmsgtny.supabase.co/functions/v1/sync-caepi
+MISSING=REACT_APP_CAEPI_SYNC_SECRET
+COMPLETE=False

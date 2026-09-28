@@ -1,0 +1,11 @@
+/* Entrada global do design system */
+
+/* ── Fundação ── */
+@import './raiz/variaveis.css';
+@import './raiz/base.css';
+
+/* ── Roupagem visual sobre PrimeReact ── */
+@import './geral.css';
+
+/* ── Boot / carregamento (sempre disponível, sem race de chunk) ── */
+@import './especificos/loadingOverlay.css';

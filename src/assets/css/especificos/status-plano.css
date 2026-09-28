@@ -1,0 +1,275 @@
+/* ── Overlay / card de status do plano ── */
+
+.status-plano {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  width: 100%;
+  min-width: 15.5rem;
+  max-width: 18rem;
+  padding: 0.15rem 0.1rem 0.05rem;
+  color: var(--text-1);
+}
+
+.status-plano--loading {
+  min-height: 8.5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--text-3);
+  font-size: var(--font-sm);
+}
+
+.status-plano__head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.status-plano__eyebrow {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 750;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-4);
+}
+
+.status-plano__title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.status-plano__nome {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-1);
+  letter-spacing: -0.01em;
+}
+
+.status-plano__badge {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.status-plano__badge .pi {
+  font-size: 0.58rem;
+}
+
+.status-plano__badge--ok {
+  color: var(--green-deep);
+  background: var(--green-ghost);
+  border-color: var(--green-line);
+}
+
+.status-plano__badge--warn {
+  color: #92400e;
+  background: var(--warning-soft);
+  border-color: var(--warning-line);
+}
+
+.status-plano__badge--danger {
+  color: #991b1b;
+  background: var(--danger-soft);
+  border-color: var(--danger-line);
+}
+
+.status-plano__badge--info {
+  color: #075985;
+  background: var(--info-soft);
+  border-color: var(--info-line);
+}
+
+.status-plano__metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.status-plano__metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.status-plano__metric-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.status-plano__metric-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-2);
+}
+
+.status-plano__metric-label .pi {
+  font-size: 0.68rem;
+  color: var(--text-4);
+}
+
+.status-plano__metric-uso {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.status-plano__metric-uso strong {
+  color: var(--text-1);
+  font-weight: 700;
+}
+
+.status-plano__track {
+  position: relative;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--surface-3);
+  overflow: hidden;
+}
+
+.status-plano__fill {
+  height: 100%;
+  border-radius: inherit;
+  width: var(--osp-perc, 0%);
+  transition: width 280ms ease, background-color 200ms ease;
+  background: var(--green);
+}
+
+.status-plano__fill--ok {
+  background: var(--green);
+}
+
+.status-plano__fill--warn {
+  background: var(--warning);
+}
+
+.status-plano__fill--danger {
+  background: var(--danger);
+}
+
+.status-plano__fill--unlimited {
+  background: linear-gradient(90deg, var(--info) 0%, #38bdf8 100%);
+  width: 100%;
+  opacity: 0.55;
+}
+
+.status-plano__perc {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--text-4);
+  font-variant-numeric: tabular-nums;
+}
+
+.status-plano__perc--warn {
+  color: var(--warning);
+}
+
+.status-plano__perc--danger {
+  color: var(--danger);
+}
+
+.status-plano__perc--unlimited {
+  color: var(--info);
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-size: 0.58rem;
+}
+
+.status-plano__hint {
+  margin: 0;
+  padding: 0.45rem 0.55rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--warning-line);
+  background: var(--warning-soft);
+  font-size: 0.68rem;
+  line-height: 1.35;
+  color: #92400e;
+}
+
+.status-plano__hint .pi {
+  margin-right: 0.3rem;
+  font-size: 0.65rem;
+}
+
+.status-plano__actions {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 0.45rem;
+  padding-top: 0.15rem;
+}
+
+.status-plano__actions .cepi-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.status-plano__updating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 5.5rem;
+  color: var(--text-3);
+  font-size: var(--font-sm);
+}
+
+/* Popover flutuante da sidebar (portal no body) */
+.plano-popover {
+  position: fixed;
+  z-index: 1105;
+  left: 4.35rem;
+  bottom: 0.75rem;
+  width: min(19rem, calc(100vw - 5rem));
+  padding: 0.75rem 0.8rem;
+  border-radius: 0.85rem;
+  border: 1px solid var(--border, #e2e8f0);
+  background: var(--surface, #fff);
+  box-shadow:
+    0 18px 40px rgba(15, 23, 42, 0.16),
+    0 4px 12px rgba(15, 23, 42, 0.06);
+  animation: plano-popover-in 0.2s ease both;
+}
+
+.plano-popover--sidebar-open {
+  left: 13.35rem;
+}
+
+@keyframes plano-popover-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Embutido na página de assinatura (já dentro de .config-block) */
+.config-block .status-plano {
+  max-width: none;
+  min-width: 0;
+  padding: 0;
+}
+
+.config-block .status-plano__eyebrow {
+  display: none;
+}

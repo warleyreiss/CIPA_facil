@@ -1,0 +1,288 @@
+.eleicoes-painel {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 0;
+  align-content: start;
+  align-items: start;
+}
+
+.eleicoes-vigencia {
+  align-self: start;
+  height: auto;
+  border: 1px solid var(--surface-border, #dbe3ee);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  background: var(--surface-card, #fff);
+}
+
+.eleicoes-vigencia h2,
+.eleicoes-rotina h2,
+.eleicoes-painel h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+}
+
+.eleicoes-vigencia p {
+  margin: 0.35rem 0 0;
+  color: #1e293b;
+  line-height: 1.45;
+}
+
+.eleicoes-vigencia.is-alerta {
+  border-color: #b45309;
+  background: #fffbeb;
+}
+
+.eleicoes-vigencia.is-vencida {
+  border-color: #b91c1c;
+  background: #fef2f2;
+}
+
+.eleicoes-indicadores {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.eleicoes-indicador {
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  background: #eff6ff;
+}
+
+.eleicoes-indicador strong {
+  display: block;
+  font-size: 1.35rem;
+  color: #1e3a8a;
+}
+
+.eleicoes-grupos {
+  display: grid;
+  gap: 1rem;
+}
+
+.eleicoes-acao {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  border-bottom: 1px solid var(--surface-border, #e2e8f0);
+  background: transparent;
+  padding: 0.7rem 0;
+  cursor: pointer;
+  color: inherit;
+}
+
+.eleicoes-acao.is-urgente strong {
+  color: #b45309;
+}
+
+@media (max-width: 800px) {
+  .eleicoes-indicadores {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.eleicoes-rotina,
+.eleicoes-secao {
+  margin: 0;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--surface-border, #dbe3ee);
+  border-radius: 14px;
+  background: var(--surface-card, #fff);
+}
+
+.eleicoes-secao h2,
+.eleicoes-rotina h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+}
+
+.eleicoes-secao > p,
+.eleicoes-rotina > p {
+  margin: 0 0 0.85rem;
+  color: #64748b;
+  line-height: 1.45;
+}
+
+.eleicoes-form-acao {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 0.8fr 1.4fr auto;
+  gap: 0.75rem;
+  align-items: end;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 900px) {
+  .eleicoes-form-acao {
+    grid-template-columns: 1fr;
+  }
+}
+
+.eleicoes-trilha {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.eleicoes-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.85rem;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--surface-border, #dbe3ee);
+  border-radius: 12px;
+  background: var(--surface-card, #fff);
+  padding: 0.9rem 1rem;
+  cursor: pointer;
+}
+
+.eleicoes-card:hover:not(:disabled) {
+  border-color: #2563eb;
+}
+
+.eleicoes-card:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.eleicoes-marca {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  color: #1e3a8a;
+  background: #dbeafe;
+}
+
+.eleicoes-card.is-concluida .eleicoes-marca {
+  color: #fff;
+  background: #16a34a;
+}
+
+.eleicoes-card.is-ativa .eleicoes-marca {
+  color: #fff;
+  background: #2563eb;
+}
+
+.eleicoes-titulo {
+  margin: 0;
+  font-weight: 650;
+}
+
+.eleicoes-norma {
+  margin: 0.15rem 0 0;
+  color: var(--text-color-secondary, #64748b);
+  font-size: 0.85rem;
+}
+
+.eleicoes-quando {
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.eleicoes-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.eleicoes-antiga {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  text-align: left;
+  color: inherit;
+  border: 0;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  background: var(--surface-ground, #f8fafc);
+  cursor: pointer;
+}
+
+.eleicoes-porte__titulo {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0.9rem 0 0.2rem;
+  font-size: 0.9rem;
+}
+
+.eleicoes-porte__texto {
+  margin: 0 0 0.45rem;
+  color: #64748b;
+  font-size: 0.8rem;
+}
+
+.eleicoes-porte__previa {
+  margin: 0.45rem 0 0;
+  padding: 0.45rem 0.6rem;
+  border-left: 3px solid #3b82f6;
+  border-radius: 3px;
+  background: #eff6ff;
+  color: #1e3a8a;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.eleicoes-aviso {
+  margin: 0 0 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  background: #eff6ff;
+  color: #1e3a8a;
+}
+
+.eleicoes-modelo {
+  white-space: pre-wrap;
+  font-family: Georgia, serif;
+  line-height: 1.45;
+  background: var(--surface-ground, #f8fafc);
+  border-radius: 10px;
+  padding: 1rem;
+  max-height: 280px;
+  overflow: auto;
+}
+
+.eleicoes-apuracao {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.eleicoes-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+@media (max-width: 640px) {
+  .eleicoes-card {
+    grid-template-columns: auto 1fr;
+  }
+
+  .eleicoes-quando {
+    grid-column: 2;
+  }
+}
+
+.editor-ata {
+  width: 100%;
+  min-height: 320px;
+  font-family: Georgia, serif;
+  line-height: 1.45;
+  padding: 0.75rem;
+  border-radius: 10px;
+  border: 1px solid var(--surface-border, #dbe3ee);
+}

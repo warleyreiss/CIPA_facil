@@ -1,0 +1,143 @@
+/* Layout responsivo — sidebar + cabeçalho
+   O conteúdo cabe na largura da tela. Se passar da altura, a rolagem é só vertical e visível. */
+
+html.app-shell #root,
+html.app-shell .app_layout {
+  height: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.home-section,
+.content-area,
+.content-area-util,
+.content-outlet-host {
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+.content-outlet-host {
+  overflow-y: auto !important;
+  scrollbar-gutter: auto;
+  scrollbar-width: auto;
+  scrollbar-color: #1e3a8a #e2e8f0;
+}
+
+html[data-theme='dark'] .content-outlet-host {
+  scrollbar-color: #93c5fd #1e293b;
+}
+
+.content-outlet-host::-webkit-scrollbar {
+  width: 10px;
+  height: 0;
+}
+
+.content-outlet-host::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.content-outlet-host::-webkit-scrollbar-thumb {
+  background: #1e3a8a;
+  border: 2px solid transparent;
+  border-radius: 999px;
+}
+
+html[data-theme='dark'] .content-outlet-host::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html[data-theme='dark'] .content-outlet-host::-webkit-scrollbar-thumb {
+  background: #93c5fd;
+  border-color: transparent;
+}
+
+.content-area-util > .content-outlet-host > .cepi-page,
+.content-area-util .cepi-page {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: auto !important;
+  max-height: none !important;
+  min-height: 100%;
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
+}
+
+.content-outlet-host .cepi-page__body,
+.content-outlet-host .cepi-page__body > * {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.content-outlet-host .p-datatable-wrapper,
+.content-outlet-host .cepi-table-scroll,
+.content-outlet-host .perfil-root__table-wrap,
+.content-outlet-host .pagina-legal-toc-mobile__track {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+.content-outlet-host table {
+  width: 100% !important;
+  min-width: 0 !important;
+  table-layout: fixed;
+}
+
+.content-outlet-host th,
+.content-outlet-host td {
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+}
+
+/* ── Tablet (≤1023px): sidebar compacta, cabeçalho enxuto ── */
+@media (max-width: 1023px) {
+  .sidebar,
+  .sidebar.open {
+    width: 58px;
+  }
+
+  .sidebar.open .logo-details .logo_name {
+    opacity: 0;
+  }
+
+  .sidebar.open li a .links_name,
+  .sidebar.open li.plano-indicador .plano-indicador-info {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .sidebar.open li.assinatura {
+    width: 58px;
+  }
+
+  .home-section.sidebar-locked {
+    left: 58px;
+    width: calc(100% - 58px);
+  }
+
+  .sidebar .sidebar-controls {
+    display: none;
+  }
+}
+
+/* ── Mobile (≤767px): sidebar oculta, conteúdo full-width ── */
+@media (max-width: 767px) {
+  .sidebar {
+    display: none !important;
+  }
+
+  .home-section,
+  .home-section.sidebar-locked {
+    left: 0 !important;
+    width: 100% !important;
+  }
+
+  .content-area-util {
+    padding-bottom: calc(3.75rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  body.mobile-nav-open {
+    overflow: hidden;
+  }
+}

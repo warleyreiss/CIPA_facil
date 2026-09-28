@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Controle EPI — Showcase Tabelas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/primeicons@7.0.0/primeicons.css" />
+  <link rel="stylesheet" href="https://unpkg.com/primereact@10.9.7/resources/themes/lara-light-green/theme.css" />
+  <link rel="stylesheet" href="https://unpkg.com/primereact@10.9.7/resources/primereact.min.css" />
+  <link rel="stylesheet" href="/src/assets/css/app.css" />
+  <link rel="stylesheet" href="./tabela-showcase.css" />
+</head>
+<body>
+
+<div class="showcase-tabela-page">
+
+  <!-- TOC -->
+  <aside class="showcase-tabela-toc">
+    <span class="showcase-tabela-toc__badge">Catálogo</span>
+    <h1 class="showcase-tabela-toc__title">Tabelas</h1>
+    <p class="showcase-tabela-toc__desc">Todos os recursos visuais de listas do projeto — preenchimento demo.</p>
+    <nav>
+      <a href="#lista-pagina-completa">Lista página completa</a>
+      <a href="#lista-controle-epi">Controle EPI + chips</a>
+      <a href="#lista-embarcada">Tabela embarcada</a>
+      <a href="#lista-dual-split">Dual split</a>
+      <a href="#lista-historico">Histórico fornecimento</a>
+      <a href="#empty-states">Empty states</a>
+      <a href="#acoes-linha">Ações de linha</a>
+      <a href="#consulta-ca">Consulta CA</a>
+      <a href="#extras-sidebar">Extras sidebar</a>
+      <a href="#esocial">eSocial</a>
+      <a href="#sidebar-compacta">Sidebar compacta</a>
+      <a href="#paginador">Paginador</a>
+    </nav>
+  </aside>
+
+  <main class="showcase-tabela-main">
+
+    <p class="showcase-tabela-hint" style="margin:0;">
+      Abra com <code>npm run dev</code> → <strong>/tabela-showcase.html</strong>. Classes e tokens do app em <code>src/assets/css/listas/</code>.
+    </p>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         1. LISTA PÁGINA COMPLETA (IndexColaborador / IndexEPI / IndexFuncao)
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="lista-pagina-completa" class="showcase-tabela-section">
+      <div class="showcase-tabela-section__head">
+        <span>Lista página completa</span>
+        <span class="showcase-tabela-section__ref">card-table · header-table · p-datatable-custom · gridlines · frozen</span>
+      </div>
+      <div class="showcase-tabela-section__body showcase-tabela-section__body--flush">
+        <div class="card-table container-tabela-full">
+          <h3 class="card-table-title">Colaboradores</h3>
+
+          <div class="p-datatable p-datatable-sm p-datatable-custom p-datatable-gridlines p-component">
+            <div class="p-datatable-header">
+              <div class="flex justify-content-end flex-wrap header-table">
+                <button type="button" class="p-button p-component p-button-sm p-button-secondary" title="Atualizar">
+                  <span class="p-button-icon pi pi-refresh"></span>
+                </button>
+                <span class="p-input-icon-left p-inputtext-table">
+                  <i class="pi pi-search"></i>
+                  <input type="text" class="p-inputtext p-inputtext-sm" placeholder="Pesquisar..." value="Maria" />
+                </span>
+                <button type="button" class="p-button p-component p-button-sm p-button-success">
+                  <span class="p-button-icon pi pi-plus"></span>
+                  <span class="p-button-label">Novo</span>
+                </button>
+                <button type="button" class="p-button p-component p-button-sm p-button-outlined p-button-secondary controle-epi-extras-trigger" title="Recursos adicionais">
+                  <span class="p-button-icon pi pi-plus"></span>
+                </button>
+                <button type="button" class="p-button p-component p-button-sm p-button-secondary" title="Opções">
+                  <span class="p-button-icon pi pi-cog"></span>
+                </button>
+              </div>
+            </div>
+
+            <div class="p-datatable-wrapper">
+              <table class="p-datatable-table">
+                <thead class="p-datatable-thead">
+                  <tr>
+                    <th class="p-sortable-column p-highlight">
+                      <div class="p-column-header-content"><span class="p-column-title">Matrícula</span><span class="p-sortable-column-icon pi pi-sort-up"></span></div>
+                    </th>
+                    <th class="p-sortable-column">
+                      <div class="p-column-header-content"><span class="p-column-title">Nome</span><span class="p-sortable-column-icon pi pi-sort-alt"></span></div>
+                    </th>
+                    <th><div class="p-column-header-content"><span class="p-column-title">Cargo / Função</span></div></th>
+                    <th><div class="p-column-header-content"><span class="p-column-title">Tamanhos</span></div></th>
+                    <th><div class="p-column-header-content"><span class="p-column-title">Status</span></div></th>
+                    <th class="p-frozen-column" align-frozen="right" style="right:0">
+                      <div class="p-column-header-content"><span class="p-column-title">Ações</span></div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="p-datatable-tbody">
+                  <tr class="p-selectable-row tabela-row-interactive">
+                    <td>00142</td>
+                    <td><span class="text-ellipsis">Maria Silva Santos</span></td>
+                    <td class="table-cell-muted">Operador de máquinas</td>
+                    <td><span class="p-tag p-tag-success tag-compact">M</span> <span class="p-tag p-tag-secondary tag-compact">42</span></td>
+                    <td><span class="p-tag p-tag-success">Ativo</span></td>
+                    <td class="p-frozen-column button-tabelas" style="right:0">
+                      <div class="table-button-action">
+                        <button type="button" class="p-button p-component p-button-text p-button-secondary p-button-sm table-action-btn" title="Editar"><span class="p-button-icon pi pi-pencil"></span></button>
+                        <button type="button" class="p-button p-component p-button-text p-button-secondary p-button-sm table-action-btn" title="Imprimir"><span class="p-button-icon pi pi-print"></span></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="p-selectable-row tabela-row-interactive">
+                    <td>00208</td>
+                    <td>João Pedro Costa</td>
+                    <td class="table-cell-muted">Auxiliar de produção</td>
+                    <td class="table-cell-zero">—</td>
+                    <td><span class="p-tag p-tag-warning">Pendente docs</span></td>
+                    <td class="p-frozen-column button-tabelas" style="right:0">
+                      <div class="table-button-action">
+                        <button type="button" class="p-button p-component p-button-text p-button-secondary p-button-sm table-action-btn"><span class="p-button-icon pi pi-pencil"></span></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="p-selectable-row">
+                    <td>00315</td>
+                    <td>Ana Beatriz Lima</td>
+                    <td>Supervisora</td>
+                    <td><span class="p-tag p-tag-info tag-compact">G</span></td>
+                    <td><span class="p-tag p-tag-success">Ativo</span></td>
+                    <td class="p-frozen-column button-tabelas" style="right:0">
+                      <div class="table-button-action">
+                        <button type="button" class="p-button p-component p-button-text p-button-secondary p-button-sm table-action-btn"><span class="p-button-icon pi pi-pencil"></span></button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="p-paginator p-component p-paginator-bottom">
+              <button type="button" class="p-paginator-element p-link p-disabled"><span class="pi pi-angle-double-left"></span></button>
+              <button type="button" class="p-paginator-element p-link p-disabled"><span class="pi pi-angle-left"></span></button>
+              <button type="button" class="p-paginator-element p-link p-highlight">1</button>
+              <button type="button" class="p-paginator-element p-link">2</button>
+              <button type="button" class="p-paginator-element p-link">3</button>
+              <button type="button" class="p-paginator-element p-link"><span class="pi pi-angle-right"></span></button>
+              <button type="button" class="p-paginator-element p-link"><span class="pi pi-angle-double-right"></span></button>
+              <span class="p-paginator-current">1–10 de 48</span>
+              <div class="p-dropdown p-component" style="width:4rem">
+                <span class="p-dropdown-label p-inputtext">10</span>
+                <span class="pi pi-chevron-down p-dropdown-trigger-icon"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tabela-footer">
+            <a href="#" class="link-ajuda-suporte link-ajuda-suporte--rodape"><i class="pi pi-question-circle"></i> Ajuda sobre colaboradores</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         2. CONTROLE EPI — recursos-adicionais + status chips
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="lista-controle-epi" class="showcase-tabela-section">
+      <div class="showcase-tabela-section__head">
+        <span>Controle EPI — filtros de status</span>
+        <span class="showcase-tabela-section__ref">card-table-adicionais · recursos-adicionais · controle-epi-header</span>
+      </div>
+      <div class="showcase-tabela-section__body showcase-tabela-section__body--flush">
+        <div class="card-table container-tabela-full card-table-adicionais">
+          <h3 class="card-table-title">Controle de EPI</h3>
+
+          <div class="p-datatable p-datatable-sm p-datatable-custom p-component">
+            <div class="p-datatable-header">
+              <div class="controle-epi-header">
+                <div class="controle-epi-filtros recursos-adicionais">
+                  <div class="controle-epi-filtro-grupo flex flex-wrap gap-2 align-items-center">
+                    <span class="controle-epi-filtro-item">
+                      <span class="p-badge p-badge-danger badge-status--pendente">3</span>
+                      <span class="p-tag p-tag-danger px-2">Vencido</span>
+                    </span>
+                    <span class="controle-epi-filtro-item">
+                      <span class="p-badge p-badge-warning">2</span>
+                      <span class="p-tag p-tag-warning px-2">Iminente</span>
+                    </span>
+                    <span class="controle-epi-filtro-item">
+                      <span class="p-badge p-badge-info badge-status--pendente">5</span>
+                      <span class="p-tag tag-status--pendente px-2">Pendente</span>
+                    </span>
+                    <span class="controle-epi-filtro-item">
+                      <span class="p-badge p-badge-success">12</span>
+                      <span class="p-tag p-tag-success px-2">No prazo</span>
+                    </span>
+                    <span class="controle-epi-filtro-item">
+                      <span class="p-tag p-tag-secondary px-2">Todos</span>
+                    </span>
+                  </div>
+                </div>
+                <div class="flex justify-content-end flex-wrap header-table">
+                  <button type="button" class="p-button p-component p-button-sm p-button-success splitbutton-filtro" style="display:none">
+                    <span class="p-button-label">Filtro</span>
+                  </button>
+                  <span class="p-input-icon-left p-inputtext-table">
+                    <i class="pi pi-search"></i>
+                    <input type="text" class="p-inputtext p-inputtext-sm" placeholder="Pesquisar..." />
+                  </span>
+                  <button type="button" class="p-button p-component p-button-sm p-button-success">
+                    <span class="p-button-icon pi pi-plus"></span>
+                    <span class="p-button-label">Fornecer EPI</span>
+                  </button>
+                  <button type="button" class="p-button p-component p-button-sm p-button-outlined p-button-secondary controle-epi-extras-trigger">
+                    <span class="p-button-icon pi pi-plus"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-datatable-wrapper">
+              <table class="p-datatable-table">
+                <thead class="p-datatable-thead">
+                  <tr>
+                    <th>Inscrição</th>
+                    <th>Nome</th>
+                    <th>EPI</th>
+                    <th>Data Fornec.</th>
+                    <th>Prazo Restante</th>
+                    <th class="p-frozen-column" style="right:4.5rem">Status</th>
+                    <th class="p-frozen-column button-tabelas" style="right:0">Ações</th>
+                  </tr>
+                </thead>
+                <tbody class="p-datatable-tbody">
+                  <tr class="tabela-row-interactive p-selectable-row">
+                    <td>00142</td>
+                    <td>Maria Silva</td>
+                    <td><span class="text-ellipsis">Luva nitrílica anti-corte modelo X200</span></td>
+                    <td>05/03/2026</td>
+                    <td class="table-cell-muted">-12 dias</td>
+                    <td class="p-frozen-column" style="right:4.5rem"><span class="p-tag p-tag-danger tag-status-compact">VENCIDO</span></td>
+                    <td class="p-frozen-column button-tabelas" style="right:0">
+                      <div class="table-button-action">
+                        <button type="button" class="p-button p-component p-button-text p-button-secondary p-button-sm table-action-btn"><span class="p-button-icon pi pi-pencil"></span></button>
+                        <button type="button" class="p-button p-component p-button-text p-button-warning p-button-sm table-action-btn"><span class="p-button-icon pi pi-replay"></span></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="tabela-row-interactive">
+                    <td>00208</td>
+                    <td>João Costa</td>
+                    <td>Capacete classe B</td>
+                    <td>01/07/2026</td>
+                    <td>18 dias</td>
+                    <td class="p-frozen-column" style="right:4.5rem"><span class="p-tag tag-status--pendente">PENDENTE</span></td>
+                    <td class="p-frozen-column button-tabelas" style="right:0">
+                      <div class="table-button-action">
+                        <button type="button" class="p-button p-component p-button-text p-button-secondary p-button-sm table-action-btn"><span class="p-button-icon pi pi-pencil"></span></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="tabela-row-interactive">
+                    <td>00315</td>
+                    <td>Ana Lima</td>
+                    <td>Óculos de proteção</td>
+                    <td>10/06/2026</td>
+                    <td>45 dias</td>
+                    <td class="p-frozen-column" style="right:4.5rem"><span class="p-tag p-tag-success">NO PRAZO</span></td>
+                    <td class="p-frozen-column button-tabelas" style="right:0">
+                      <div class="table-button-action">
+                        <button type="button" class="p-button p-component p-button-text p-button-secondary p-button-sm table-action-btn"><span class="p-button-icon pi pi-pencil"></span></button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="p-paginator p-component p-paginator-bottom">
+              <button type="button" class="p-paginator-element p-link p-highlight">1</button>
+              <span class="p-paginator-current">1–10 de 22</span>
+            </div>
+          </div>
+
+          <div class="tabela-footer">
+            <a href="#" class="link-ajuda-suporte link-ajuda-suporte--rodape">Ajuda — controle de EPI</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         3. TABELA EMBARCADA (FornecedoresEPI / FormGerenciarGhe)
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="lista-embarcada" class="showcase-tabela-section">
+      <div class="showcase-tabela-section__head">
+        <span>Tabela embarcada</span>
+        <span class="showcase-tabela-section__ref">card-table--embedded · card-table-title--sm · striped</span>
+      </div>
+      <div class="showcase-tabela-section__body">
+        <div class="fornecedores-epi">
+          <div class="fornecedores-epi-form">
+            <h4 class="fornecedores-epi-form-title">Novo fornecedor</h4>
+            <div class="flex gap-2">
+              <input type="text" class="p-inputtext formInput" placeholder="Razão social" style="flex:1" />
+              <button type="button" class="p-button p-component p-button-sm p-button-success formSubmitBtn--sm">Salvar</button>
+            </div>
+          </div>
+          <div class="card-table card-table--embedded">
+            <h4 class="card-table-title card-table-title--sm">Fornecedores cadastrados</h4>
+            <div class="p-datatable p-datatable-sm p-datatable-striped p-component" style="max-height:14rem">
+              <div class="p-datatable-wrapper" style="max-height:12rem">
+                <table class="p-datatable-table">
+                  <thead class="p-datatable-thead">
+                    <tr>
+                      <th class="p-sortable-column">Nome</th>
+                      <th>CNPJ</th>
+                      <th class="col-actions-compact">Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody class="p-datatable-tbody">
+                    <tr>
+                      <td>EPI Brasil Ltda</td>
+                      <td class="table-cell-muted">12.345.678/0001-90</td>
+                      <td class="button-tabelas">
+                        <div class="table-button-action">
+                          <button type="button" class="p-button p-component p-button-text p-button-danger p-button-sm table-action-btn"><span class="p-button-icon pi pi-trash"></span></button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Segurança Total SA</td>
+                      <td class="table-cell-muted">98.765.432/0001-10</td>
+                      <td class="button-tabelas">
+                        <div class="table-button-action">
+                          <button type="button" class="p-button p-component p-button-text p-button-danger p-button-sm table-action-btn"><span class="p-button-icon pi pi-trash"></span></button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         4. DUAL SPLIT (MovimentacaoEPI)
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="lista-dual-split" class="showcase-tabela-section">
+      <div class="showcase-tabela-section__head">
+        <span>Movimentação EPI — dual panel</span>
+        <span class="showcase-tabela-section__ref">movimentacao-epi · card-table--split · header-table--compact</span>
+      </div>
+      <div class="showcase-tabela-section__body">
+        <div class="movimentacao-epi">
+          <div class="movimentacao-epi-filtro">
+            <div>
+              <span class="movimentacao-epi-filtro-label">Período</span>
+              <span class="movimentacao-epi-filtro-valor">01/06/2026 — 30/06/2026</span>
+            </div>
+            <button type="button" class="p-button p-component p-button-sm p-button-outlined p-button-secondary">
+              <span class="p-button-icon pi pi-calendar"></span>
+              <span class="p-button-label">Alterar período</span>
+            </button>
+          </div>
+          <div class="movimentacao-epi-panels showcase-tabela-dual">
+            <div class="movimentacao-epi-panel">
+              <div class="card-table card-table--embedded card-table--split">
+                <div class="p-datatable p-datatable-sm p-datatable-striped p-component">
+                  <div class="p-datatable-header">
+                    <div class="header-table header-table--compact">
+                      <span class="header-table-split-title">Entradas</span>
+                      <button type="button" class="p-button p-component p-button-sm p-button-secondary"><span class="p-button-icon pi pi-file-excel"></span></button>
+                      <span class="p-input-icon-left p-inputtext-table"><i class="pi pi-search"></i><input class="p-inputtext p-inputtext-sm" placeholder="Buscar" /></span>
+                    </div>
+                  </div>
+                  <div class="p-datatable-wrapper">
+                    <table class="p-datatable-table">
+                      <thead class="p-datatable-thead"><tr><th>Data</th><th>EPI</th><th align="center">Qtd.</th></tr></thead>
+                      <tbody class="p-datatable-tbody">
+                        <tr><td>02/06</td><td>Luva nitrílica</td><td align="center">50</td></tr>
+                        <tr><td>15/06</td><td>Capacete B</td><td align="center">20</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="movimentacao-epi-panel">
+              <div class="card-table card-table--embedded card-table--split">
+                <div class="p-datatable p-datatable-sm p-datatable-striped p-component">
+                  <div class="p-datatable-header">
+                    <div class="header-table header-table--compact">
+                      <span class="header-table-split-title">Saídas / fornecimentos</span>
+                      <button type="button" class="p-button p-component p-button-sm p-button-secondary"><span class="p-button-icon pi pi-file-excel"></span></button>
+                    </div>
+                  </div>
+                  <div class="p-datatable-wrapper">
+                    <table class="p-datatable-table">
+                      <thead class="p-datatable-thead"><tr><th>Data</th><th>Colaborador</th><th align="center">Qtd.</th></tr></thead>
+                      <tbody class="p-datatable-tbody">
+                        <tr><td>03/06</td><td>Maria Silva</td><td align="center">1</td></tr>
+                        <tr><td>18/06</td><td>João Costa</td><td align="center">2</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         5. HISTÓRICO FORNECIMENTO
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="lista-historico" class="showcase-tabela-section">
+      <div class="showcase-tabela-section__head">
+        <span>Histórico de fornecimento</span>
+        <span class="showcase-tabela-section__ref">historico-fornecimento-* · filtros · toolbar</span>
+      </div>
+      <div class="showcase-tabela-section__body">
+        <div class="card-table historico-fornecimento-page">
+          <div class="historico-fornecimento-top">
+            <div>
+              <button type="button" class="p-button p-component p-button-text p-button-sm historico-fornecimento-back"><span class="p-button-icon pi pi-arrow-left"></span> Voltar</button>
+              <h3 class="card-table-title" style="border:0;padding-left:0">Histórico de fornecimento</h3>
+              <p class="historico-fornecimento-subtitle">Consulte entregas passadas com filtros por período, colaborador, EPI e motivo.</p>
+            </div>
+          </div>
+
+          <div class="historico-fornecimento-filtros">
+            <h4 class="historico-fornecimento-filtros-title">Filtros da consulta</h4>
+            <p class="historico-fornecimento-filtros-hint">Etapa 1 — defina o recorte antes de carregar a tabela de resultados.</p>
+            <div class="flex flex-wrap gap-3">
+              <div class="field" style="min-width:12rem">
+                <label class="formLabel">Período</label>
+                <span class="p-calendar p-component w-full">
+                  <input class="p-inputtext formInput" value="01/06/2026 — 30/06/2026" readonly />
+                  <button type="button" class="p-datepicker-trigger p-button p-component"><span class="pi pi-calendar"></span></button>
+                </span>
+              </div>
+              <div class="field" style="min-width:12rem">
+                <label class="formLabel">Colaboradores</label>
+                <div class="p-multiselect p-component formInput"><span class="p-multiselect-label">3 selecionados</span><span class="pi pi-chevron-down"></span></div>
+              </div>
+              <div class="field" style="min-width:12rem">
+                <label class="formLabel">EPIs</label>
+                <div class="p-multiselect p-component formInput"><span class="p-multiselect-label">Todos</span><span class="pi pi-chevron-down"></span></div>
+              </div>
+            </div>
+            <div class="historico-fornecimento-filtros-actions mt-3">
+              <button type="button" class="p-button p-component p-button-sm p-button-success formSubmitBtn--sm">Consultar histórico</button>
+            </div>
+          </div>
+
+          <div class="card-table" style="margin:0">
+            <div class="p-datatable p-datatable-sm p-datatable-custom p-component">
+              <div class="p-datatable-header">
+                <div class="historico-fornecimento-toolbar">
+                  <div class="historico-fornecimento-toolbar__info">
+                    <span class="historico-fornecimento-toolbar__periodo">01/06/2026 — 30/06/2026</span>
+                    <span class="historico-fornecimento-toolbar__count">14 registros encontrados</span>
+                  </div>
+                  <div class="historico-fornecimento-toolbar__actions">
+                    <div class="p-dropdown p-component historico-fornecimento-motivo-filter formInput">
+                      <span class="p-dropdown-label">Motivo: todos</span>
+                      <span class="pi pi-chevron-down p-dropdown-trigger-icon"></span>
+                    </div>
+                    <button type="button" class="p-button p-component p-button-sm p-button-secondary"><span class="p-button-icon pi pi-file-excel"></span></button>
+                    <span class="p-input-icon-left p-inputtext-table"><i class="pi pi-search"></i><input class="p-inputtext p-inputtext-sm" placeholder="Filtrar resultados" /></span>
+                  </div>
+                </div>
+              </div>
+              <div class="p-datatable-wrapper">
+                <table class="p-datatable-table">
+                  <thead class="p-datatable-thead">
+                    <tr>
+                      <th>Data</th><th>Colaborador</th><th>EPI</th><th>Motivo</th><th>Qtd.</th>
+                      <th class="p-frozen-column button-tabelas" style="right:0">Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody class="p-datatable-tbody">
+                    <tr>
+                      <td>05/06/2026</td><td>Maria Silva</td><td>Luva nitrílica</td><td>Substituição</td><td>1</td>
+                      <td class="p-frozen-column button-tabelas" style="right:0">
+                        <div class="table-button-action">
+                          <button type="button" class="p-button p-component p-button-text p-button-warning p-button-sm table-action-btn"><span class="p-button-icon pi pi-replay"></span></button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>12/06/2026</td><td>João Costa</td><td>Capacete B</td><td>Admissão</td><td>1</td>
+                      <td class="p-frozen-column button-tabelas" style="right:0">
+                        <div class="table-button-action">
+                          <button type="button" class="p-button p-component p-button-text p-button-warning p-button-sm table-action-btn"><span class="p-button-icon pi pi-replay"></span></button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="p-paginator p-component p-paginator-bottom">
+                <button type="button" class="p-paginator-element p-link p-highlight">1</button>
+                <button type="button" class="p-paginator-element p-link">2</button>
+                <span class="p-paginator-current">1–15 de 14</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         6. EMPTY STATES
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="empty-states" class="showcase-tabela-section">
+      <div class="showcase-tabela-section__head">
+        <span>Empty states</span>
+        <span class="showcase-tabela-section__ref">TableEmptyState · tabela-empty-wrap · ícones box/search/filter</span>
+      </div>
+      <div class="showcase-tabela-section__body showcase-tabela-dual">
+        <div class="tabela-empty-wrap tabela-info">
+          <svg width="75" height="75" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="tabela-empty-icon" aria-hidden>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"/>
+          </svg>
+          <h4 class="tabela-util-m-0 tabela-util-font-semibold tabela-util-text-xl tabela-util-text-primary">Nenhum colaborador cadastrado</h4>
+          <p class="tabela-util-m-0 tabela-util-mt-1 tabela-util-text-sm tabela-util-text-muted tabela-util-max-w-md">Cadastre o primeiro colaborador para iniciar o controle de EPI.</p>
+          <div class="tabela-empty-action">
+            <button type="button" class="p-button p-component p-button-sm p-button-success">Novo colaborador</button>
+          </div>
+        </div>
+        <div class="tabela-empty-wrap tabela-info tabela-empty-wrap--sm">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="tabela-empty-icon" aria-hidden>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.637 10.637z"/>
+          </svg>
+          <h4 class="tabela-util-text-primary tabela-util-font-semibold">Nenhum resultado para a busca</h4>
+          <p class="tabela-util-text-sm tabela-util-text-muted">Tente outro termo ou limpe o filtro.</p>
+          <div class="tabela-empty-action">
+            <button type="button" class="p-button p-component p-button-sm p-button-outlined p-button-secondary">Limpar pesquisa</button>
+          </div>
+        </div>
+        <div class="tabela-empty-wrap tabela-info" style="grid-column:1/-1">
+          <svg width="75" height="75" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="tabela-empty-icon" aria-hidden>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z"/>
+          </svg>
+          <h4 class="tabela-util-text-primary tabela-util-font-semibold">Nenhum registro com este filtro de status</h4>
+          <p class="tabela-util-text-sm tabela-util-text-muted">Controle EPI — chip ativo sem resultados.</p>
+          <div class="tabela-empty-action">
+            <button type="button" class="p-button p-component p-button-sm p-button-outlined p-button-success">Redefinir filtros</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         7. AÇÕES DE LINHA
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="acoes-linha" class="showcase-tabela-section">
+      <div class="showcase-tabela-section__head">
+        <span>Ações de linha</span>
+        <span class="showcase-tabela-section__ref">TableRowActions · table-action-btn · severities</span>
+      </div>
+      <div class="showcase-tabela-section__body flex flex-wrap gap-4 align-items-center">
+        <div>
+          <p class="showcase-tabela-note">Padrão (editar + imprimir)</p>
+          <div class="table-button-action">
+            <button type="button" class="p-button p-component p-button-text p-button-secondary p-button-sm table-action-btn"><span class="p-button-icon pi pi-pencil"></span></button>
+            <button type="button" class="p-button p-component p-button-text p-button-secondary p-button-sm table-action-btn"><span class="p-button-icon pi pi-print"></span></button>
+          </div>
+        </div>
+        <div>
+          <p class="showcase-tabela-note">Estorno (warning)</p>
+          <div class="table-button-action">
+            <button type="button" class="p-button p-component p-button-text p-button-warning p-button-sm table-action-btn"><span class="p-button-icon pi pi-replay"></span></button>
+          </div>
+        </div>
+        <div>
+          <p class="showcase-tabela-note">Excluir (danger)</p>
+          <div class="table-button-action">
+            <button type="button" class="p-button p-component p-button-text p-button-danger p-button-sm table-action-btn"><span class="p-button-icon pi pi-trash"></span></button>
+          </div>
+        </div>
+        <div>
+          <p class="showcase-tabela-note">Linha própria (tabela-row-self)</p>
+          <span class="tabela-row-self">Você</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         8. CONSULTA CA AVULSA
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="consulta-ca" class="showcase-tabela-section">
+      <div class="showcase-tabela-section__head">
+        <span>Consulta CA avulsa</span>
+        <span class="showcase-tabela-section__ref">consulta-ca-avulsa__* — lista definição (não DataTable)</span>
+      </div>
+      <div class="showcase-tabela-section__body">
+        <div class="consulta-ca-avulsa">
+          <p class="consulta-ca-avulsa__intro">Consulta pontual de Certificado de Aprovação sem sair do fluxo de controle.</p>
+          <form class="consulta-ca-avulsa__form" onsubmit="return false">
+            <label class="formLabel">Número do CA</label>
+            <div class="consulta-ca-avulsa__input-row">
+              <input type="text" class="p-inputtext formInput consulta-ca-avulsa__msg" value="12345" />
+              <button type="button" class="p-button p-component p-button-sm p-button-success formSubmitBtn--sm">Consultar</button>
+            </div>
+          </form>
+          <div class="consulta-ca-avulsa__resultado">
+            <div class="consulta-ca-avulsa__resultado-head">
+              <div>
+                <span class="consulta-ca-avulsa__label">Certificado de Aprovação</span>
+                <h3>CA 12.345</h3>
+              </div>
+              <div class="consulta-ca-avulsa__tags">
+                <span class="p-tag p-tag-success">Válido</span>
+                <span class="p-tag p-tag-info">NR-6</span>
+              </div>
+            </div>
+            <ul class="consulta-ca-avulsa__lista">
+              <li><strong>Equipamento</strong><span>Luva de proteção contra agentes mecânicos</span></li>
+              <li><strong>Validade</strong><span>15/08/2028</span></li>
+              <li><strong>Fabricante</strong><span>EPI Brasil Ltda</span></li>
+              <li><strong>Referência</strong><span>Mod. X200 — tam. M/G</span></li>
+            </ul>
+            <p class="consulta-ca-avulsa__descricao">Equipamento de proteção individual para uso em operações com risco de abrasão e corte.</p>
+            <div class="consulta-ca-avulsa__acoes">
+              <button type="button" class="p-button p-component p-button-sm p-button-outlined p-button-secondary">Vincular ao EPI</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         9. EXTRAS SIDEBAR (Controle EPI)
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="extras-sidebar" class="showcase-tabela-section">
+      <div class="showcase-tabela-section__head">
+        <span>Menu extras (sidebar)</span>
+        <span class="showcase-tabela-section__ref">controle-epi-extras-* · ConsultaCaExtrasCard</span>
+      </div>
+      <div class="showcase-tabela-section__body">
+        <div class="controle-epi-extras" style="max-width:22rem;border:1px solid var(--border);border-radius:var(--fr);background:var(--form-canvas)">
+          <p class="controle-epi-extras__intro">Recursos adicionais do Controle EPI — mesmo visual do painel lateral.</p>
+          <div class="controle-epi-extras-menu">
+            <button type="button" class="controle-epi-extras-item controle-epi-extras-item--historico">
+              <span class="controle-epi-extras-item__icon" style="background:var(--info-soft);color:var(--info)"><i class="pi pi-history"></i></span>
+              <span class="controle-epi-extras-item__body">
+                <span class="controle-epi-extras-item__title">Histórico de fornecimento</span>
+                <span class="controle-epi-extras-item__desc">Consulta entregas anteriores com filtros avançados.</span>
+              </span>
+              <i class="pi pi-chevron-right controle-epi-extras-item__arrow"></i>
+            </button>
+            <div class="controle-epi-extras-ca-wrap">
+              <button type="button" class="controle-epi-extras-item controle-epi-extras-item--ca controle-epi-extras-item--inplace">
+                <span class="controle-epi-extras-item__icon" style="background:var(--green-ghost);color:var(--green)"><i class="pi pi-search"></i></span>
+                <span class="controle-epi-extras-item__body">
+                  <span class="controle-epi-extras-item__title">Consulta CA avulsa</span>
+                  <span class="controle-epi-extras-item__desc">Validar certificado sem cadastrar EPI.</span>
+                </span>
+                <i class="pi pi-chevron-right controle-epi-extras-item__arrow"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         10. ESOCIAL
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="esocial" class="showcase-tabela-section">
+      <div class="showcase-tabela-section__head">
+        <span>eSocial</span>
+        <span class="showcase-tabela-section__ref">esocial-page · esocial-tabela</span>
+      </div>
+      <div class="showcase-tabela-section__body showcase-tabela-section__body--flush">
+        <div class="esocial-page card-table">
+          <div class="esocial-toolbar">
+            <div class="esocial-toolbar__filtro">
+              <label class="formLabel">Competência</label>
+              <span class="p-calendar p-component"><input class="p-inputtext formInput" value="06/2026" readonly /><button type="button" class="p-datepicker-trigger p-button p-component"><span class="pi pi-calendar"></span></button></span>
+            </div>
+            <div class="esocial-toolbar__acoes">
+              <button type="button" class="p-button p-component p-button-sm p-button-success">Gerar lote</button>
+            </div>
+          </div>
+          <div class="p-datatable p-datatable-sm esocial-tabela p-component">
+            <div class="p-datatable-wrapper" style="max-height:12rem">
+              <table class="p-datatable-table">
+                <thead class="p-datatable-thead"><tr><th>Evento</th><th>Colaborador</th><th>Status</th><th>Protocolo</th></tr></thead>
+                <tbody class="p-datatable-tbody">
+                  <tr><td>S-2240</td><td>Maria Silva</td><td><span class="p-tag p-tag-success">Enviado</span></td><td class="table-cell-muted">1.2.3456.789</td></tr>
+                  <tr><td>S-2240</td><td>João Costa</td><td><span class="p-tag p-tag-warning">Pendente</span></td><td class="table-cell-zero">—</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         11. SIDEBAR COMPACTA (FormGerenciarGhe / Matriz EPI)
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="sidebar-compacta" class="showcase-tabela-section">
+      <div class="showcase-tabela-section__head">
+        <span>Tabela compacta em sidebar</span>
+        <span class="showcase-tabela-section__ref">scrollHeight fixo · form-itens-scroll-table · col-*-compact</span>
+      </div>
+      <div class="showcase-tabela-section__body">
+        <div class="card-table card-table--embedded" style="max-width:24rem">
+          <h4 class="card-table-title card-table-title--sm">Matriz EPI do colaborador</h4>
+          <div class="p-datatable p-datatable-sm p-component form-itens-scroll-table">
+            <div class="p-datatable-wrapper" style="max-height:10rem">
+              <table class="p-datatable-table">
+                <thead class="p-datatable-thead">
+                  <tr>
+                    <th>EPI</th>
+                    <th class="col-status-compact">Status</th>
+                    <th class="col-actions-compact">Ações</th>
+                  </tr>
+                </thead>
+                <tbody class="p-datatable-tbody">
+                  <tr class="datatable-row--clickable"><td>Luva</td><td><span class="p-tag p-tag-success tag-compact">OK</span></td><td class="button-tabelas"><div class="table-button-action"><button type="button" class="p-button p-component p-button-text p-button-secondary p-button-sm table-action-btn"><span class="p-button-icon pi pi-eye"></span></button></div></td></tr>
+                  <tr><td>Capacete</td><td><span class="p-tag p-tag-danger tag-compact">Vencido</span></td><td class="button-tabelas"><div class="table-button-action"><button type="button" class="p-button p-component p-button-text p-button-secondary p-button-sm table-action-btn"><span class="p-button-icon pi pi-eye"></span></button></div></td></tr>
+                  <tr><td>Óculos</td><td><span class="p-tag p-tag-warning tag-compact">Prazo</span></td><td class="button-tabelas"><div class="table-button-action"><button type="button" class="p-button p-component p-button-text p-button-secondary p-button-sm table-action-btn"><span class="p-button-icon pi pi-eye"></span></button></div></td></tr>
+                  <tr><td>Bota</td><td><span class="p-tag p-tag-success tag-compact">OK</span></td><td class="button-tabelas"><div class="table-button-action"><button type="button" class="p-button p-component p-button-text p-button-secondary p-button-sm table-action-btn"><span class="p-button-icon pi pi-eye"></span></button></div></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         12. PAGINADOR + LOADING
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="paginador" class="showcase-tabela-section">
+      <div class="showcase-tabela-section__head">
+        <span>Paginador e loading</span>
+        <span class="showcase-tabela-section__ref">p-paginator-bottom · p-datatable-loading</span>
+      </div>
+      <div class="showcase-tabela-section__body showcase-tabela-dual">
+        <div class="card-table card-table--embedded">
+          <h4 class="card-table-title card-table-title--sm">Paginador completo</h4>
+          <div class="p-paginator p-component p-paginator-bottom" style="border:1px solid var(--table-border-light);border-radius:var(--fr)">
+            <button type="button" class="p-paginator-element p-link"><span class="pi pi-angle-double-left"></span></button>
+            <button type="button" class="p-paginator-element p-link"><span class="pi pi-angle-left"></span></button>
+            <button type="button" class="p-paginator-element p-link">1</button>
+            <button type="button" class="p-paginator-element p-link p-highlight">2</button>
+            <button type="button" class="p-paginator-element p-link">3</button>
+            <button type="button" class="p-paginator-element p-link"><span class="pi pi-angle-right"></span></button>
+            <button type="button" class="p-paginator-element p-link"><span class="pi pi-angle-double-right"></span></button>
+            <span class="p-paginator-current">11–20 de 48</span>
+            <div class="p-dropdown p-component"><span class="p-dropdown-label p-inputtext">10</span><span class="pi pi-chevron-down"></span></div>
+          </div>
+        </div>
+        <div class="card-table card-table--embedded" style="position:relative;min-height:10rem">
+          <h4 class="card-table-title card-table-title--sm">Estado loading</h4>
+          <div class="p-datatable p-datatable-sm p-component p-datatable-loading" style="min-height:8rem">
+            <div class="p-datatable-loading-overlay p-component-overlay" style="display:flex;align-items:center;justify-content:center">
+              <i class="pi pi-spin pi-spinner" style="font-size:2rem;color:var(--green)"></i>
+            </div>
+            <div class="p-datatable-wrapper">
+              <table class="p-datatable-table">
+                <thead class="p-datatable-thead"><tr><th>Coluna A</th><th>Coluna B</th></tr></thead>
+                <tbody class="p-datatable-tbody"><tr><td>…</td><td>…</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+</body>
+</html>

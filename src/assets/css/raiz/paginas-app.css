@@ -1,0 +1,146 @@
+/* ============================================================
+   paginas-app.css
+   Layout de páginas autenticadas (src/pages)
+   ============================================================ */
+
+.cepi-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-6);
+  min-height: 0;
+  flex: 1;
+  animation: cepi-page-in 0.35s var(--cepi-ease, cubic-bezier(0.22, 1, 0.36, 1)) both;
+}
+
+@keyframes cepi-page-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cepi-page__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.85rem 1.25rem;
+  padding-bottom: 0.15rem;
+}
+
+.cepi-page__title {
+  margin: 0;
+  font-size: 1.45rem;
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+  color: var(--text-1);
+}
+
+.cepi-page__subtitle {
+  margin: 0.35rem 0 0;
+  max-width: 38rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-3);
+}
+
+.cepi-page__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.cepi-page__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-6);
+  min-height: 0;
+  flex: 1 0 auto;
+}
+
+.cepi-page__body > * {
+  flex: 0 0 auto;
+  height: auto;
+  max-height: none;
+}
+
+.cepi-page__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+}
+
+.cepi-page .cepi-card {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.cepi-page .cepi-card--flush {
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.cepi-page .cepi-card--flush .cepi-card__header {
+  border-radius: 0;
+}
+
+.cepi-page .cepi-card--flush .cepi-card__body {
+  padding: 0;
+}
+
+.cepi-page .cepi-card__body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.cepi-page .cepi-table-shell {
+  flex: 1;
+  min-height: 0;
+}
+
+/* PrimeFlex grid dentro de páginas cepi */
+.cepi-page .grid {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .cepi-page__header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cepi-page__actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+/* Telas com "Voltar": o botão fica preso no canto superior direito, também no celular. */
+.cepi-page--voltar > .cepi-page__header {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+}
+
+.cepi-page--voltar > .cepi-page__header > .cepi-page__actions {
+  width: auto;
+  flex-shrink: 0;
+  justify-content: flex-end;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cepi-page {
+    animation: none;
+  }
+}

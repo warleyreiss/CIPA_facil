@@ -1,0 +1,217 @@
+/* Banner LGPD / cookies — flutuante, limpo e alinhado à marca */
+
+.lgpd-banner {
+  position: fixed;
+  inset: auto 0 0;
+  /* Acima de modais cepi (1100) e toasts (2000); abaixo só da vinheta de boot auth (99999) */
+  z-index: 12050;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+  pointer-events: none;
+}
+
+.lgpd-banner__panel {
+  pointer-events: auto;
+  position: relative;
+  width: 100%;
+  max-width: none;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid color-mix(in srgb, var(--border, #d8dce3) 80%, transparent);
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, #2563eb 6%, #ffffff) 0%,
+      #ffffff 42%,
+      #ffffff 100%
+    );
+  box-shadow:
+    0 18px 48px rgba(15, 23, 42, 0.14),
+    0 4px 14px rgba(15, 23, 42, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  animation: lgpdBannerIn 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.lgpd-banner__accent {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #2563eb, #1d4ed8);
+}
+
+.lgpd-banner__body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem 1rem;
+  padding: 0.95rem 1rem 0.95rem 1.15rem;
+}
+
+.lgpd-banner__brand {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  flex: 1 1 16rem;
+  min-width: 0;
+}
+
+.lgpd-banner__logo {
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  object-fit: contain;
+  margin-top: 0.1rem;
+}
+
+.lgpd-banner__copy {
+  min-width: 0;
+}
+
+.lgpd-banner__title {
+  margin: 0 0 0.28rem;
+  font-size: 0.9rem;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  color: var(--text-1, #1a2332);
+  line-height: 1.25;
+}
+
+.lgpd-banner__text {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--text-3, #5c6678);
+}
+
+.lgpd-banner__text strong {
+  color: var(--text-1, #1a2332);
+  font-weight: 650;
+}
+
+.lgpd-banner__text a {
+  color: #1d4ed8;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, #2563eb 35%, transparent);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.lgpd-banner__text a:hover {
+  color: #047857;
+  border-bottom-color: #2563eb;
+}
+
+.lgpd-banner__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.45rem;
+  flex: 0 0 auto;
+}
+
+.lgpd-banner__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.25rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: 0.55rem;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.lgpd-banner__btn:active {
+  transform: translateY(1px);
+}
+
+.lgpd-banner__btn--ghost {
+  color: var(--text-2, #334155);
+  background: transparent;
+  border-color: var(--border, #d8dce3);
+}
+
+.lgpd-banner__btn--ghost:hover {
+  background: color-mix(in srgb, var(--surface-2, #f4f5f7) 80%, #ffffff);
+  border-color: color-mix(in srgb, #2563eb 25%, var(--border, #d8dce3));
+  color: #047857;
+}
+
+.lgpd-banner__btn--primary {
+  color: #ffffff;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  box-shadow: 0 6px 16px color-mix(in srgb, #2563eb 28%, transparent);
+}
+
+.lgpd-banner__btn--primary:hover {
+  filter: brightness(1.04);
+  box-shadow: 0 8px 20px color-mix(in srgb, #2563eb 36%, transparent);
+}
+
+@keyframes lgpdBannerIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 640px) {
+  .lgpd-banner {
+    padding: 10px;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .lgpd-banner__panel {
+    border-radius: 0.85rem;
+  }
+
+  .lgpd-banner__body {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.85rem 0.85rem 0.85rem 1rem;
+  }
+
+  .lgpd-banner__actions {
+    width: 100%;
+  }
+
+  .lgpd-banner__btn {
+    flex: 1 1 auto;
+  }
+
+  .lgpd-banner__btn--primary {
+    flex: 1.4 1 auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lgpd-banner__panel {
+    animation: none;
+  }
+
+  .lgpd-banner__btn:active {
+    transform: none;
+  }
+}

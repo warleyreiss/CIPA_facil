@@ -1,0 +1,329 @@
+/* ============================================================
+   CONTROLE EPI — Showcase Tabelas (layout do catálogo)
+   Estilos de tabela: src/assets/css/listas/ via app.css
+   ============================================================ */
+
+/* ── Showcase layout ─────────────────────────────────────────── */
+.showcase-tabela-page {
+  display: grid;
+  grid-template-columns: 15rem 1fr;
+  min-height: 100vh;
+}
+
+.showcase-tabela-toc {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  background: var(--white);
+  border-right: 1px solid var(--border);
+  padding: var(--sp-5);
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.showcase-tabela-toc__badge {
+  display: inline-block;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--green);
+  background: var(--green-ghost);
+  border: 1px solid var(--green-line);
+  border-radius: var(--fr);
+  padding: 0.1rem 0.4rem;
+  margin-bottom: var(--sp-2);
+}
+
+.showcase-tabela-toc__title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--text-1);
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin-bottom: 0.25rem;
+}
+
+.showcase-tabela-toc__desc {
+  font-size: 0.6875rem;
+  color: var(--text-3);
+  line-height: 1.45;
+  margin-bottom: var(--sp-5);
+  padding-bottom: var(--sp-5);
+  border-bottom: 1px solid var(--border);
+}
+
+.showcase-tabela-toc nav { display: flex; flex-direction: column; gap: 1px; }
+
+.showcase-tabela-toc nav a {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-3);
+  text-decoration: none;
+  padding: 0.2875rem var(--sp-3);
+  border-radius: var(--fr);
+  border-left: 2px solid transparent;
+  transition: color var(--ft), background var(--ft), border-color var(--ft);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.showcase-tabela-toc nav a:hover {
+  color: var(--green);
+  background: var(--green-ghost);
+  border-left-color: var(--green);
+}
+
+.showcase-tabela-main {
+  padding: var(--sp-4) var(--sp-6) var(--sp-7);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  min-width: 0;
+}
+
+.showcase-tabela-hint {
+  font-size: 0.75rem;
+  color: var(--text-3);
+  padding: var(--sp-3) var(--sp-5);
+  background: var(--info-soft);
+  border: 1px solid var(--info-line);
+  border-left: 2px solid var(--info);
+  border-radius: var(--fr);
+}
+
+.showcase-tabela-section {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border);
+  border-radius: var(--fr);
+  overflow: hidden;
+  transition: border-left-color 0.2s;
+}
+
+.showcase-tabela-section:hover { border-left-color: var(--green-muted); }
+
+.showcase-tabela-section__head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-3);
+  padding: 0.4375rem var(--sp-5);
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-1);
+  letter-spacing: -0.01em;
+}
+
+.showcase-tabela-section__head > span:first-child { flex-shrink: 0; }
+
+.showcase-tabela-section__ref {
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--text-4);
+  font-family: 'SF Mono', 'Fira Code', monospace;
+}
+
+.showcase-tabela-section__body { padding: var(--sp-5); }
+.showcase-tabela-section__body--flush { padding: 0; }
+
+.showcase-tabela-dual {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--sp-4);
+  align-items: start;
+}
+
+.showcase-tabela-note {
+  font-size: var(--fls);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-3);
+  margin-bottom: var(--sp-2);
+}
+
+/* ── Form helpers (demos com filtros no catálogo) ──────────── */
+.formLabel,
+label.formLabel {
+  display: block;
+  font-size: var(--fls);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-2);
+  line-height: 1.2;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.p-inputtext,
+.formInput,
+.p-inputtext.formInput {
+  width: 100%;
+  height: var(--fh);
+  padding: 0 var(--sp-4) !important;
+  font-size: var(--ffs) !important;
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--text-1) !important;
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--fr) !important;
+  outline: none !important;
+  box-shadow: none !important;
+  transition: border-color var(--ft), background var(--ft) !important;
+  -webkit-appearance: none;
+}
+
+.p-inputtext:focus,
+.formInput:focus {
+  outline: none !important;
+  background: var(--white) !important;
+  border-color: var(--green) !important;
+  border-left-width: 2px !important;
+  box-shadow: none !important;
+}
+
+.p-inputtext-sm {
+  height: 1.875rem !important;
+  font-size: 0.75rem !important;
+}
+
+.p-calendar {
+  display: inline-flex !important;
+  width: 100%;
+}
+
+.p-calendar .p-inputtext {
+  flex: 1;
+  border-right: none !important;
+  border-radius: var(--fr) 0 0 var(--fr) !important;
+}
+
+.p-datepicker-trigger {
+  flex-shrink: 0;
+  width: var(--fh) !important;
+  height: var(--fh) !important;
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  border-left: none !important;
+  border-radius: 0 var(--fr) var(--fr) 0 !important;
+  color: var(--text-3) !important;
+  box-shadow: none !important;
+  cursor: pointer;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: background var(--ft), color var(--ft) !important;
+}
+
+.p-datepicker-trigger:enabled:hover {
+  background: var(--green) !important;
+  border-color: var(--green) !important;
+  color: var(--white) !important;
+}
+
+.p-dropdown {
+  display: inline-flex !important;
+  align-items: center;
+  height: var(--fh);
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--fr) !important;
+  box-shadow: none !important;
+  cursor: pointer;
+  transition: border-color var(--ft) !important;
+  padding: 0 var(--sp-3);
+  gap: var(--sp-2);
+}
+
+.p-dropdown-label {
+  flex: 1;
+  font-size: var(--ffs) !important;
+  font-weight: 500;
+  color: var(--text-1) !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  line-height: calc(var(--fh) - 2px);
+}
+
+.p-dropdown-trigger-icon { font-size: 0.5625rem; color: var(--text-4); }
+
+.p-multiselect {
+  display: inline-flex !important;
+  align-items: center;
+  height: var(--fh);
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--fr) !important;
+  box-shadow: none !important;
+  cursor: pointer;
+  padding: 0 var(--sp-3);
+  gap: var(--sp-2);
+}
+
+.p-multiselect-label {
+  flex: 1;
+  font-size: var(--ffs) !important;
+  font-weight: 500;
+  color: var(--text-1) !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.formSubmitBtn--sm {
+  height: 1.875rem !important;
+  padding: 0 var(--sp-4) !important;
+  font-size: 0.75rem !important;
+}
+
+/* ── Flex utilities (PrimeFlex subset no catálogo) ───────────── */
+.flex { display: flex; }
+.flex-wrap { flex-wrap: wrap; }
+.justify-content-end { justify-content: flex-end; }
+.align-items-center { align-items: center; }
+.gap-2 { gap: 0.5rem; }
+.gap-3 { gap: 0.75rem; }
+.gap-4 { gap: 1rem; }
+.mt-3 { margin-top: 0.75rem; }
+.w-full { width: 100%; }
+
+/* ── Responsivo do catálogo ──────────────────────────────────── */
+@media (max-width: 900px) {
+  .showcase-tabela-page { grid-template-columns: 1fr; }
+
+  .showcase-tabela-toc {
+    position: static;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .showcase-tabela-toc nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--sp-1);
+  }
+
+  .showcase-tabela-main { padding: var(--sp-4); }
+}
+
+@media (max-width: 640px) {
+  .showcase-tabela-section__head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.1rem;
+  }
+}

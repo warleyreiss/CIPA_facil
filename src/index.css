@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+/* Skip legacy hand-authored CSS trees (not TSX) from content scan noise */
+@source not "../assets/css/especificos/**";
+@source not "../assets/css/geral.css";
+@source not "../assets/css/raiz/**";
+
+/* Dark mode alinhado ao app: html[data-theme="dark"] */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@theme {
+  --color-green: var(--green);
+  --color-green-hover: var(--green-hover);
+  --color-green-deep: var(--green-deep);
+  --color-green-ghost: var(--green-ghost);
+  --color-green-soft: var(--green-soft);
+  --color-green-line: var(--green-line);
+  --color-green-muted: var(--green-muted);
+
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-surface-hover: var(--surface-hover);
+
+  --color-border: var(--border);
+  --color-border-hover: var(--border-hover);
+  --color-border-strong: var(--border-strong);
+
+  --color-text-1: var(--text-1);
+  --color-text-2: var(--text-2);
+  --color-text-3: var(--text-3);
+  --color-text-4: var(--text-4);
+
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-danger-line: var(--danger-line);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-warning-line: var(--warning-line);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-info-line: var(--info-line);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+
+  --radius-sm: 3px;
+  --radius-md: 3px;
+  --font-sans: var(--font-family, ui-sans-serif, system-ui, sans-serif);
+  --font-display: 'Syne', 'Sora', ui-sans-serif, system-ui, sans-serif;
+  --font-marketing: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --shadow-cepi-sm: var(--cepi-shadow-sm);
+  --shadow-cepi-md: var(--cepi-shadow-md);
+  --shadow-cepi-lg: var(--cepi-shadow-lg);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  font-size: var(--font-base, 0.8125rem);
+  line-height: 1.45;
+  color: var(--text-primary, #1a2332);
+  background: var(--fundo-background, #eceef2);
+}
+
+#root {
+  min-height: 100vh;
+  background: var(--fundo-background, #eceef2);
+  transition: background var(--form-transition, 140ms ease);
+}

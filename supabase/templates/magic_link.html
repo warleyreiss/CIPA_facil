@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Acesso — CIPA Fácil</title>
+</head>
+<body style="margin:0;padding:0;background:#eef1f5;font-family:'Segoe UI',Arial,sans-serif;color:#1a2332;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#eef1f5;padding:32px 16px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #d8dce3;">
+          <tr>
+            <td style="padding:28px 28px 16px;text-align:center;border-bottom:2px solid #2563eb;">
+              <p style="margin:0;font-size:22px;font-weight:800;letter-spacing:-0.03em;color:#2563eb;">CIPA Fácil</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:28px;">
+              <h1 style="margin:0 0 12px;font-size:20px;font-weight:700;color:#1a2332;">Seu link de acesso</h1>
+              <p style="margin:0 0 16px;font-size:15px;line-height:1.6;color:#5c6678;">
+                Use o botão abaixo para entrar na plataforma <strong style="color:#1a2332;">CIPA Fácil</strong>
+                com o e-mail <strong style="color:#1a2332;">{{ .Email }}</strong>.
+              </p>
+              <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto 24px;">
+                <tr>
+                  <td style="border-radius:6px;background:#2563eb;">
+                    <a href="{{ .ConfirmationURL }}" style="display:inline-block;padding:14px 28px;font-size:15px;font-weight:700;color:#ffffff;text-decoration:none;">
+                      Acessar plataforma
+                    </a>
+                  </td>
+                </tr>
+              </table>
+              <p style="margin:0;font-size:13px;line-height:1.5;color:#9aa3b2;">
+                Link alternativo:<br />
+                <a href="{{ .ConfirmationURL }}" style="color:#1d4ed8;word-break:break-all;">{{ .ConfirmationURL }}</a>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:20px 28px 28px;border-top:1px dashed #d8dce3;text-align:center;">
+              <p style="margin:0 0 4px;font-size:12px;color:#5c6678;">
+                <strong style="color:#1d4ed8;">CIPA Fácil</strong> — Gestão da CIPA
+              </p>
+              <p style="margin:0;font-size:11px;color:#9aa3b2;">
+                CIPA Fácil™ · Proativa Web™ · CNPJ 50.923.885/0001-79<br />
+                <a href="mailto:contato@proativaweb.com.br" style="color:#1d4ed8;text-decoration:none;">contato@proativaweb.com.br</a>
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

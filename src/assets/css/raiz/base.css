@@ -1,0 +1,1702 @@
+/* ============================================================
+   base.css
+   Design system app (forms, botões, tabelas, modais)
+   Complementa Tailwind (@theme em index.css) + variaveis.css
+   ============================================================ */
+
+@import './paginas-app.css';
+
+/* ── 1. Reset + base ─────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  max-width: 100%;
+  overflow-x: hidden;
+  scrollbar-width: auto;
+  scrollbar-color: #1e3a8a #e2e8f0;
+}
+
+html.app-shell,
+html.app-shell body {
+  height: 100%;
+  overflow: hidden;
+}
+
+html[data-theme='dark'] {
+  scrollbar-color: #93c5fd #1e293b;
+}
+
+:root {
+  --cepi-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-base);
+  line-height: 1.5;
+  color: var(--text-1);
+  background: var(--canvas);
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: var(--font-family-mono);
+  font-size: 0.75rem;
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  border-radius: var(--fr);
+  padding: 0.05rem 0.3rem;
+  color: var(--green-deep);
+}
+
+::selection {
+  background: var(--green-soft);
+  color: var(--green-deep);
+}
+
+/* Scrollbar vertical evidente. A horizontal não é usada. */
+::-webkit-scrollbar { width: 10px; height: 0; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: #1e3a8a;
+  border: 2px solid transparent;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: #1d4ed8; }
+html[data-theme='dark'] ::-webkit-scrollbar-track { background: transparent; }
+html[data-theme='dark'] ::-webkit-scrollbar-thumb {
+  background: #93c5fd;
+  border-color: transparent;
+}
+
+/* Focus teclado */
+*:focus-visible {
+  outline: none;
+  box-shadow: var(--cepi-ring);
+  border-radius: var(--fr);
+}
+
+button:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+select:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible) {
+  outline: none;
+}
+
+button:focus-visible,
+.cepi-btn:focus-visible,
+.p-button:focus-visible {
+  box-shadow: none;
+}
+
+/* ── 2. Botões (.cepi-btn) ───────────────────────────────── */
+.cepi-btn {
+  height: var(--fh);
+  padding: 0 var(--sp-6);
+  border-radius: var(--fr);
+  border: 1px solid transparent;
+  font-family: inherit;
+  font-size: var(--ffs);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.12s var(--cepi-ease);
+}
+
+.cepi-btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+/* Ícones internos um pouco menores que o botão */
+.cepi-btn > .pi,
+.cepi-btn .pi,
+.cepi-btn > i[class*='pi-'] {
+  font-size: var(--btn-icon) !important;
+  line-height: 1 !important;
+  width: 1em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cepi-btn > svg,
+.cepi-btn svg {
+  width: var(--btn-icon) !important;
+  height: var(--btn-icon) !important;
+  flex-shrink: 0;
+}
+
+.cepi-btn--sm > .pi,
+.cepi-btn--sm .pi,
+.cepi-btn--sm > i[class*='pi-'],
+.cepi-btn.p-button-sm > .pi,
+.cepi-btn.p-button-sm .pi {
+  font-size: var(--btn-icon-sm) !important;
+}
+
+.cepi-btn--sm > svg,
+.cepi-btn--sm svg,
+.cepi-btn.p-button-sm > svg,
+.cepi-btn.p-button-sm svg,
+.cepi-btn--icon.cepi-btn--sm > svg,
+.cepi-btn--icon.cepi-btn--sm svg {
+  width: var(--btn-icon-sm) !important;
+  height: var(--btn-icon-sm) !important;
+}
+
+/* Ícone IA (extras) — maior e centrado no botão */
+.cepi-btn svg.ai-sparkle-icon,
+.cepi-btn--sm svg.ai-sparkle-icon,
+.cepi-btn.p-button-sm svg.ai-sparkle-icon,
+.cepi-btn--icon.cepi-btn--sm svg.ai-sparkle-icon {
+  width: 1.25rem !important;
+  height: 1.25rem !important;
+  display: block !important;
+  margin: 0 !important;
+  flex-shrink: 0;
+  align-self: center;
+  /* peso visual do spark fica um pouco acima do centro geométrico */
+  transform: translateY(2px);
+}
+
+.cepi-btn--icon.cepi-btn--xs > .pi,
+.cepi-btn--icon.cepi-btn--xs .pi,
+.cepi-btn--icon.cepi-btn--xs > svg,
+.cepi-btn--icon.cepi-btn--xs svg {
+  font-size: var(--btn-icon-xs) !important;
+  width: var(--btn-icon-xs) !important;
+  height: var(--btn-icon-xs) !important;
+}
+
+.cepi-btn--sm {
+  height: var(--btn-h-sm);
+  padding: 0 0.5rem;
+  font-size: var(--btn-fs-sm);
+  gap: 0.25rem;
+}
+.cepi-btn--md { height: var(--btn-h); font-size: var(--btn-fs); }
+.cepi-btn--lg { height: 2.125rem; padding: 0 1rem; font-size: var(--font-md); }
+.cepi-btn--icon { width: var(--btn-h); height: var(--btn-h); padding: 0; }
+.cepi-btn--icon.cepi-btn--sm { width: var(--btn-h-sm); height: var(--btn-h-sm); }
+.cepi-btn--icon.cepi-btn--xs { width: var(--btn-h-xs); height: var(--btn-h-xs); font-size: 0.6875rem; }
+
+/* Classes Prime legadas no mesmo botão cepi */
+.cepi-btn.p-button-sm {
+  height: var(--btn-h-sm);
+  padding: 0 0.5rem;
+  font-size: var(--btn-fs-sm);
+}
+.cepi-btn.p-button-lg {
+  height: 2.125rem;
+  padding: 0 1rem;
+  font-size: 0.8125rem;
+}
+
+.cepi-btn--primary {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+.cepi-btn--primary:hover:not(:disabled) {
+  background: var(--green-hover);
+  border-color: var(--green-hover);
+}
+
+.cepi-btn--secondary {
+  background: var(--btn-secondary-bg);
+  border-color: var(--btn-secondary-border);
+  color: var(--btn-secondary-text);
+}
+.cepi-btn--secondary:hover:not(:disabled) {
+  background: var(--btn-secondary-hover);
+  border-color: var(--btn-secondary-border);
+  color: var(--btn-secondary-text);
+}
+
+/* Outlined secondary (ex.: ferramentas do header) — mesma cor, fundo transparente */
+.cepi-btn--secondary.p-button-outlined {
+  background: transparent;
+  border-color: var(--btn-secondary-border);
+  color: var(--btn-secondary-text);
+}
+.cepi-btn--secondary.p-button-outlined:hover:not(:disabled) {
+  background: var(--btn-secondary-bg);
+}
+
+/* Toolbar da tabela: secondary = navy da marca (Novo continua primary/verde) */
+.p-datatable-header .cepi-btn--secondary,
+.cepi-table-toolbar .cepi-btn--secondary,
+.p-toolbar .cepi-btn--secondary {
+  background: var(--brand-navy-sidebar);
+  border-color: var(--brand-navy-sidebar);
+  color: #fff;
+}
+.p-datatable-header .cepi-btn--secondary:hover:not(:disabled),
+.cepi-table-toolbar .cepi-btn--secondary:hover:not(:disabled),
+.p-toolbar .cepi-btn--secondary:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--brand-navy-sidebar) 88%, #fff);
+  border-color: color-mix(in srgb, var(--brand-navy-sidebar) 88%, #fff);
+  color: #fff;
+}
+.p-datatable-header .cepi-btn--secondary.p-button-outlined,
+.cepi-table-toolbar .cepi-btn--secondary.p-button-outlined,
+.p-toolbar .cepi-btn--secondary.p-button-outlined {
+  background: var(--brand-navy-sidebar);
+  border-color: var(--brand-navy-sidebar);
+  color: #fff;
+}
+.p-datatable-header .cepi-btn--secondary.p-button-outlined:hover:not(:disabled),
+.cepi-table-toolbar .cepi-btn--secondary.p-button-outlined:hover:not(:disabled),
+.p-toolbar .cepi-btn--secondary.p-button-outlined:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--brand-navy-sidebar) 88%, #fff);
+  border-color: color-mix(in srgb, var(--brand-navy-sidebar) 88%, #fff);
+  color: #fff;
+}
+
+.cepi-btn--outline {
+  background: transparent;
+  border-color: var(--border-hover);
+  color: var(--green);
+}
+.cepi-btn--outline:hover:not(:disabled) {
+  background: var(--green-ghost);
+  border-color: var(--green);
+}
+
+.cepi-btn--ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--text-2);
+}
+.cepi-btn--ghost:hover:not(:disabled) {
+  background: var(--surface-hover);
+  color: var(--text-1);
+}
+
+.cepi-btn--danger {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: #fff;
+}
+.cepi-btn--danger:hover:not(:disabled) {
+  background: #b91c1c;
+  border-color: #b91c1c;
+}
+
+.cepi-btn--text {
+  background: transparent;
+  border-color: transparent;
+  color: var(--green);
+  height: auto;
+  padding: 0.25rem 0.5rem;
+}
+.cepi-btn--text:hover:not(:disabled) {
+  background: var(--green-ghost);
+}
+
+/* ── 3. Campos (.cepi-control) ───────────────────────────── */
+.cepi-control {
+  min-height: var(--fh);
+  width: 100%;
+  padding: 0 0.75rem;
+  border-radius: var(--fr);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-1);
+  font-family: inherit;
+  font-size: var(--ffs);
+  line-height: 1.4;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+
+.cepi-control:hover:not(:disabled) {
+  border-color: var(--border-hover);
+}
+
+.cepi-control:focus {
+  outline: none;
+  border-color: var(--green);
+  box-shadow: none;
+}
+
+.cepi-control:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: var(--surface-2);
+}
+
+.cepi-control::placeholder {
+  color: var(--text-4);
+}
+
+.cepi-control--textarea {
+  min-height: 5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  resize: vertical;
+}
+
+.cepi-control--invalid,
+.cepi-control.cepi-control--invalid {
+  border-color: var(--danger);
+}
+.cepi-control--invalid:focus {
+  box-shadow: none;
+}
+
+/* Float label (FloatField / ui-float) — label na borda, sem sobrepor valor */
+.ui-float {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.ui-float > input,
+.ui-float > textarea,
+.ui-float > button[role="combobox"],
+.ui-float > .ui-float-control,
+.ui-float > .cepi-control,
+.ui-float > .ui-float-slot input,
+.ui-float > .ui-float-slot .ui-float-control,
+.ui-float > .ui-float-slot textarea {
+  width: 100%;
+  min-height: var(--float-control-h);
+  border-radius: var(--fr);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-1);
+  font-family: inherit;
+  font-size: var(--ffs);
+  line-height: 1.35;
+  outline: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    padding 0.15s ease;
+}
+
+.ui-float > input,
+.ui-float > button[role="combobox"],
+.ui-float > .ui-float-control,
+.ui-float > .cepi-control,
+.ui-float > .ui-float-slot input,
+.ui-float > .ui-float-slot .ui-float-control {
+  padding: 0 0.75rem;
+}
+
+.ui-float > textarea,
+.ui-float > .ui-float-slot textarea {
+  min-height: 5.5rem;
+  padding: 0.75rem;
+  resize: vertical;
+}
+
+/* Valor preenchido ou foco: reserva topo para o label */
+.ui-float.has-value > input,
+.ui-float.is-focused > input,
+.ui-float.has-value > button[role="combobox"],
+.ui-float.is-focused > button[role="combobox"],
+.ui-float.has-value > .ui-float-control,
+.ui-float.is-focused > .ui-float-control,
+.ui-float.has-value > .ui-float-slot input,
+.ui-float.is-focused > .ui-float-slot input,
+.ui-float.has-value > .ui-float-slot .ui-float-control,
+.ui-float.is-focused > .ui-float-slot .ui-float-control {
+  align-items: flex-end;
+  padding-top: 0.9rem;
+  padding-bottom: 0.28rem;
+}
+
+.ui-float > input:hover:not(:disabled),
+.ui-float > textarea:hover:not(:disabled),
+.ui-float > button[role="combobox"]:hover:not(:disabled),
+.ui-float > .ui-float-slot input:hover:not(:disabled) {
+  border-color: var(--border-hover);
+}
+
+.ui-float > input:focus,
+.ui-float > textarea:focus,
+.ui-float > button[role="combobox"]:focus,
+.ui-float > .ui-float-control:focus-within,
+.ui-float > .cepi-control:focus,
+.ui-float > .ui-float-slot input:focus,
+.ui-float > .ui-float-slot .ui-float-control:focus-within {
+  border-color: var(--green);
+  box-shadow: none;
+}
+
+.ui-float > label {
+  position: absolute;
+  left: 0.65rem;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: calc(100% - 1.25rem);
+  font-size: var(--ffs);
+  font-weight: 500;
+  color: var(--text-3);
+  pointer-events: none;
+  transition: all 0.15s var(--cepi-ease);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  z-index: 2;
+}
+
+.ui-float > textarea + label {
+  top: 1rem;
+  transform: none;
+}
+
+.ui-float:has(> input[type='date']) > input {
+  min-height: 2.75rem;
+  padding-top: 0.95rem;
+  padding-bottom: 0.2rem;
+  line-height: 1;
+}
+
+.ui-float.has-value > label,
+.ui-float.is-focused > label,
+.ui-float:has(> input[type='date']) > label,
+.ui-float > input:focus + label,
+.ui-float > input:not(:placeholder-shown) + label,
+.ui-float > textarea:focus + label,
+.ui-float > textarea:not(:placeholder-shown) + label,
+.ui-float > button[role="combobox"][data-state="open"] + label,
+.ui-float > button[role="combobox"][data-has-value="true"] + label {
+  top: 0;
+  transform: translateY(-50%);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--green-hover);
+  background: var(--surface);
+  padding: 0 var(--float-label-gap);
+  max-width: calc(100% - 1.25rem);
+}
+
+.ui-float:has(.ui-has-trailing-icon) > label {
+  max-width: calc(100% - var(--input-icon-strip-w) - 0.35rem);
+}
+
+.ui-float.is-invalid > input,
+.ui-float.is-invalid > textarea,
+.ui-float.is-invalid > button[role="combobox"],
+.ui-float.is-invalid > .ui-float-control,
+.ui-float.is-invalid > .ui-float-slot input,
+.ui-float > input.p-invalid,
+.ui-float > textarea.p-invalid {
+  border-color: var(--danger);
+}
+
+.ui-float > input:disabled,
+.ui-float > textarea:disabled,
+.ui-float > button[role="combobox"]:disabled,
+.ui-float > .ui-float-slot input:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  background: var(--surface-2);
+}
+
+.ui-float > .ui-float-slot {
+  position: relative;
+  width: 100%;
+}
+
+.ui-float > .ui-float-slot .relative {
+  width: 100%;
+}
+
+.ui-float > .ui-float-slot.ui-has-trailing-icon > input,
+.ui-float > .ui-float-slot.ui-has-trailing-icon > .ui-float-control,
+.ui-float > .ui-float-slot.ui-has-trailing-icon > textarea {
+  padding-right: var(--input-icon-strip-w);
+}
+
+/* DatePicker/slot standalone (ex.: barra do dashboard, sem wrapper .ui-float) */
+.ui-float-slot {
+  position: relative;
+}
+
+.ui-float-slot.ui-has-trailing-icon > input,
+.ui-float-slot.ui-has-trailing-icon > .ui-float-control,
+.ui-float-slot.ui-has-trailing-icon > textarea {
+  padding-right: var(--input-icon-strip-w);
+}
+
+.ui-float-slot__trigger {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: var(--input-icon-strip-w);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--text-3);
+  cursor: pointer;
+  z-index: 2;
+  line-height: 1;
+}
+
+.ui-float-slot__trigger:hover:not(:disabled) {
+  color: var(--text-1);
+}
+
+.ui-float-slot__trigger:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ui-float-slot__trigger svg {
+  width: var(--input-icon-size);
+  height: var(--input-icon-size);
+  flex-shrink: 0;
+}
+
+/* Ícone auxiliar (ex.: status CA) dentro da borda do campo */
+.field-with-addon {
+  position: relative;
+  width: 100%;
+}
+
+.field-with-addon .ui-float > input,
+.field-with-addon .ui-float > .ui-float-control,
+.field-with-addon .ui-float > .ui-float-slot input,
+.field-with-addon .ui-float > .ui-float-slot .ui-float-control {
+  padding-right: calc(var(--input-icon-strip-w) + 0.125rem);
+}
+
+.field-with-addon .ui-float > label {
+  max-width: calc(100% - var(--input-icon-strip-w) - 0.35rem);
+}
+
+.field-with-addon__addon {
+  position: absolute;
+  right: 0.625rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--input-icon-size);
+  height: var(--input-icon-size);
+  line-height: 1;
+  pointer-events: none;
+  font-size: var(--input-icon-size);
+}
+
+.field-with-addon__addon .pi {
+  font-size: var(--input-icon-size);
+}
+
+.field-with-addon__addon.is-success { color: var(--green-deep); }
+.field-with-addon__addon.is-warn { color: var(--warning); }
+.field-with-addon__addon.is-error { color: var(--danger); }
+
+/* ── 4. Formulários (.cepi-form) ─────────────────────────── */
+.cepi-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-6);
+}
+
+.painel-corpo-extras{
+  margin: 5px ;
+}
+
+/* Formulários em painéis (sidebar / dialog) */
+.painel-corpo .cepi-form-stack,
+.painel-corpo form,
+.painel-corpo > div > .field:first-child {
+  --form-stack-gap: 1rem;
+}
+
+.painel-corpo .field {
+  margin: 0 0 var(--form-stack-gap, 1rem);
+}
+
+.painel-corpo .field.mt-3,
+.painel-corpo .field.mb-3 {
+  margin-top: 0 !important;
+}
+
+.painel-corpo .grid {
+  row-gap: var(--form-stack-gap, 1rem);
+  column-gap: 0.75rem;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.painel-corpo .grid > [class*='col-'] {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.painel-corpo .field small,
+.painel-corpo .field .block.text-sm {
+  margin-top: 0.375rem;
+}
+
+.painel-corpo .flex.flex-wrap.gap-2 {
+  gap: 0.5rem !important;
+}
+
+.cepi-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--sp-5) var(--sp-6);
+}
+
+.cepi-form__grid .cepi-form__full {
+  grid-column: 1 / -1;
+}
+
+.cepi-form__grid > .field {
+  margin-bottom: 0;
+}
+
+.cepi-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--sp-3);
+  padding-top: var(--sp-5);
+  border-top: 1px solid var(--border);
+}
+
+.cepi-form__actions .cepi-btn,
+.cepi-form__actions .formSubmitBtnNative {
+  height: var(--btn-h);
+  font-size: var(--btn-fs);
+}
+
+.cepi-form__hint {
+  margin-top: 0.25rem;
+  font-size: 0.6875rem;
+  color: var(--text-3);
+  line-height: 1.45;
+}
+
+.cepi-form__error {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.625rem 0.75rem;
+  border-radius: var(--fr);
+  background: var(--danger-soft);
+  border: 1px solid color-mix(in srgb, var(--danger) 28%, var(--border));
+  font-size: 0.8125rem;
+  color: #b91c1c;
+}
+
+@media (max-width: 640px) {
+  .cepi-form__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── 5. Superfícies (.cepi-card) ─────────────────────────── */
+.cepi-card {
+  border-radius: var(--fr);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--cepi-shadow-sm);
+  overflow: hidden;
+}
+
+.cepi-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  padding: var(--sp-5) var(--sp-6);
+  font-size: var(--font-md);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-1);
+/*background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);*/
+}
+
+.cepi-card__body {
+  padding: var(--sp-6);
+}
+
+.cepi-card__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--sp-3);
+  padding: var(--sp-5) var(--sp-6);
+  border-top: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+.cepi-card--flush .cepi-card__body {
+  padding: 0;
+}
+
+.cepi-card--flush .cepi-table-shell {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* ── 6. Tabelas (.cepi-table) ────────────────────────────── */
+.cepi-table-shell {
+  border-radius: var(--fr);
+  background: var(--surface);
+  box-shadow: var(--cepi-shadow-sm);
+  overflow: hidden;
+  min-height: 0;
+}
+
+.cepi-table-shell--flex {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  height: 100%;
+}
+
+.cepi-table-scroll {
+  position: relative;
+  min-height: 0;
+}
+
+.cepi-table-shell--flex .cepi-table-scroll {
+  flex: 1 1 auto;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+/* Barras de rolagem das tabelas — verdes; engrossam só no hover da barra (não da tabela) */
+.cepi-table-scroll,
+.p-datatable-wrapper,
+.p-datatable-scrollable-body,
+.cadastro-section__table-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--green-muted) color-mix(in srgb, var(--green) 10%, transparent);
+}
+
+.cepi-table-scroll::-webkit-scrollbar,
+.p-datatable-wrapper::-webkit-scrollbar,
+.p-datatable-scrollable-body::-webkit-scrollbar,
+.cadastro-section__table-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.cepi-table-scroll::-webkit-scrollbar-track,
+.p-datatable-wrapper::-webkit-scrollbar-track,
+.p-datatable-scrollable-body::-webkit-scrollbar-track,
+.cadastro-section__table-scroll::-webkit-scrollbar-track {
+  background: color-mix(in srgb, var(--green) 8%, transparent);
+  border-radius: 999px;
+}
+
+.cepi-table-scroll::-webkit-scrollbar-thumb,
+.p-datatable-wrapper::-webkit-scrollbar-thumb,
+.p-datatable-scrollable-body::-webkit-scrollbar-thumb,
+.cadastro-section__table-scroll::-webkit-scrollbar-thumb {
+  background: var(--green-muted);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.cepi-table-scroll::-webkit-scrollbar:hover,
+.p-datatable-wrapper::-webkit-scrollbar:hover,
+.p-datatable-scrollable-body::-webkit-scrollbar:hover,
+.cadastro-section__table-scroll::-webkit-scrollbar:hover {
+  width: 12px;
+  height: 12px;
+}
+
+.cepi-table-scroll::-webkit-scrollbar-thumb:hover,
+.p-datatable-wrapper::-webkit-scrollbar-thumb:hover,
+.p-datatable-scrollable-body::-webkit-scrollbar-thumb:hover,
+.cadastro-section__table-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--green-hover);
+  border-width: 1px;
+}
+
+.cepi-table-shell--flex .cepi-table__head {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  box-shadow: 0 1px 0 var(--table-border);
+}
+
+.cepi-table-shell--compact .cepi-table__th {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: 0.6875rem;
+}
+
+.cepi-table-shell--compact .cepi-table__td {
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  font-size: 0.75rem;
+}
+
+.cepi-table-shell--flex .cepi-table__footer {
+  flex-shrink: 0;
+  z-index: 1;
+  background: var(--surface-2);
+  height: 2rem;
+  min-height: 2rem;
+}
+
+.cepi-table-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  background: var(--table-head-bg);
+  flex-shrink: 0;
+  width: 100%;
+  min-width: 0;
+}
+
+.cepi-table-toolbar > .p-toolbar-group-start,
+.cepi-table-toolbar > .p-toolbar-group-end,
+.cepi-table-toolbar > div {
+  min-width: 0;
+}
+
+.cepi-table-toolbar > .p-toolbar-group-start {
+  margin-right: auto;
+}
+
+.cepi-table-toolbar > .p-toolbar-group-end {
+  margin-left: 0;
+}
+
+/* Quando há start + end, empurra o end para a direita */
+.cepi-table-toolbar:has(> .p-toolbar-group-start) > .p-toolbar-group-end {
+  margin-left: auto;
+}
+
+/* Telas pequenas: uma linha quando couber; quebra só se precisar (sem órfãos à direita) */
+@media (max-width: 767px) {
+  .cepi-table-toolbar,
+  .p-datatable-header,
+  .p-datatable .p-datatable-header {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 0.4rem !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    row-gap: 0.4rem !important;
+  }
+
+  .cepi-table-toolbar > .p-toolbar-group-start,
+  .cepi-table-toolbar > .p-toolbar-group-end,
+  .p-datatable-header > .cepi-table-toolbar {
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /*
+   * flex-start evita o padrão feio do justify-end + wrap
+   * (botão sozinho à direita, busca na linha de baixo, ações na 3ª).
+   */
+  .cepi-table-toolbar .p-toolbar-group-start,
+  .cepi-table-toolbar .p-toolbar-group-end,
+  .cepi-table-toolbar .p-toolbar-group-end > .flex,
+  .cepi-table-toolbar .flex,
+  .p-datatable-header .flex {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 0.4rem !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Busca encolhe primeiro (basis 0) para caber na mesma linha dos botões */
+  .cepi-table-toolbar .p-input-icon-left,
+  .p-datatable-header .p-input-icon-left {
+    flex: 1 1 0 !important;
+    width: auto !important;
+    min-width: 5.5rem !important;
+    max-width: 100% !important;
+  }
+
+  .cepi-table-toolbar .p-input-icon-left > input,
+  .p-datatable-header .p-input-icon-left > input {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .cepi-table-toolbar .p-button,
+  .cepi-table-toolbar .cepi-btn,
+  .p-datatable-header .p-button,
+  .p-datatable-header .cepi-btn,
+  .cepi-table-toolbar .p-toolbar-group-end > span,
+  .cepi-table-toolbar .p-toolbar-group-end > .flex > span {
+    flex: 0 0 auto !important;
+  }
+}
+
+/* Busca e campos na barra da tabela — mesma altura dos botões sm */
+.cepi-table-toolbar .cepi-control,
+.cepi-table-toolbar input[type='search'],
+.cepi-table-toolbar input[type='text'],
+.cepi-table-toolbar .p-inputtext,
+.p-datatable-header .cepi-control,
+.p-datatable-header input[type='search'],
+.p-datatable-header input[type='text'],
+.p-datatable-header .p-inputtext {
+  height: var(--btn-h-sm) !important;
+  min-height: var(--btn-h-sm) !important;
+  max-height: var(--btn-h-sm) !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  font-size: var(--btn-fs-sm) !important;
+  line-height: 1.2 !important;
+  border-color: var(--border-hover) !important;
+  background: var(--surface) !important;
+  color: var(--text-1) !important;
+}
+
+.cepi-table-toolbar .p-input-icon-left,
+.p-datatable-header .p-input-icon-left,
+.p-toolbar .p-input-icon-left {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  vertical-align: middle;
+  flex: 0 0 auto;
+}
+
+.cepi-table-toolbar .p-input-icon-left > i,
+.p-datatable-header .p-input-icon-left > i,
+.p-toolbar .p-input-icon-left > i {
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.75rem;
+  line-height: 1;
+  pointer-events: none;
+  color: var(--text-3);
+  z-index: 1;
+}
+
+.cepi-table-toolbar .p-input-icon-left > input,
+.p-datatable-header .p-input-icon-left > input,
+.p-toolbar .p-input-icon-left > input {
+  padding-left: 1.75rem !important;
+  width: min(14rem, 42vw) !important;
+  max-width: min(14rem, 42vw) !important;
+}
+
+/* Sobrescreve width fixa do search no mobile (regra acima usa !important) */
+@media (max-width: 767px) {
+  .cepi-table-toolbar .p-input-icon-left,
+  .p-datatable-header .p-input-icon-left,
+  .p-toolbar .p-input-icon-left {
+    flex: 1 1 0 !important;
+    min-width: 5.5rem !important;
+    max-width: 100% !important;
+    width: auto !important;
+  }
+
+  .cepi-table-toolbar .p-input-icon-left > input,
+  .p-datatable-header .p-input-icon-left > input,
+  .p-toolbar .p-input-icon-left > input {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+}
+
+/* type=search: evita botão nativo do browser competindo com o ícone */
+.cepi-table-toolbar input[type='search']::-webkit-search-decoration,
+.cepi-table-toolbar input[type='search']::-webkit-search-cancel-button,
+.cepi-table-toolbar input[type='search']::-webkit-search-results-button,
+.p-datatable-header input[type='search']::-webkit-search-decoration,
+.p-datatable-header input[type='search']::-webkit-search-cancel-button,
+.historico-mov__filtro input[type='search']::-webkit-search-decoration,
+.historico-mov__filtro input[type='search']::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.cepi-table-toolbar > div,
+.p-datatable-header > div {
+  align-items: center;
+}
+
+.cepi-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--table-font-size);
+}
+
+.cepi-table__head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--table-head-bg);
+}
+
+.cepi-table__th {
+  padding: var(--table-header-padding-y) var(--table-cell-padding-x);
+  border-bottom: 1px solid var(--table-border);
+  font-size: var(--table-header-font-size);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--table-head-text);
+  white-space: nowrap;
+  vertical-align: middle;
+  line-height: 1.25;
+  text-align: left !important;
+}
+
+@media (max-width: 767px) {
+  .cepi-table__th {
+    white-space: normal;
+    letter-spacing: 0.02em;
+    font-size: 0.625rem;
+    padding: 0.4rem 0.4rem;
+    vertical-align: bottom;
+  }
+
+  .cepi-table__td {
+    padding: 0.45rem 0.4rem;
+    font-size: 0.75rem;
+  }
+}
+
+.cepi-table__th .cepi-table__th-inner {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.35rem;
+}
+
+.cepi-table__td {
+  padding: var(--table-cell-padding-y) var(--table-cell-padding-x);
+  border-bottom: 1px solid var(--table-border-light);
+  color: var(--table-text);
+  vertical-align: middle;
+  line-height: 1.35;
+  font-size: var(--table-font-size);
+  text-align: left;
+  max-width: 28rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  .cepi-table-shell--mobile .cepi-table__td:not(.cepi-table__td--actions) {
+    max-width: none;
+    overflow: visible;
+    text-overflow: unset;
+    white-space: normal;
+  }
+}
+
+.cepi-table__td:has(.cepi-table-actions),
+.cepi-table__td.cepi-table__td--actions {
+  max-width: none;
+  overflow: visible;
+  white-space: nowrap;
+  width: 1%;
+}
+
+.cepi-table__td.cepi-table__td--wrap {
+  max-width: none;
+  overflow: visible;
+  white-space: normal;
+}
+
+.cepi-table__row:hover .cepi-table__td {
+  background: var(--table-row-hover);
+}
+
+.cepi-table__row:nth-child(even) .cepi-table__td {
+  background: var(--table-row-stripe);
+}
+
+.cepi-table__row:hover:nth-child(even) .cepi-table__td {
+  background: var(--table-row-hover);
+}
+
+.cepi-table__empty {
+  padding: 2.5rem 1rem;
+  text-align: center;
+  color: var(--text-3);
+  font-size: var(--font-sm);
+}
+
+.cepi-table__footer {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.25rem 0.65rem;
+  min-height: 2rem;
+  height: 2rem;
+  border-top: 1px solid var(--table-border-light);
+  background: var(--surface-2);
+  font-size: 0.75rem;
+  color: var(--text-2);
+  box-sizing: border-box;
+}
+
+.cepi-table__footer--compact,
+.cepi-table__footer.p-paginator {
+  min-height: 2rem !important;
+  height: 2rem !important;
+  padding: 0.2rem 0.65rem !important;
+  gap: 0.5rem !important;
+  justify-content: space-between !important;
+  background: var(--surface-2) !important;
+}
+
+.cepi-table__footer-start {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  flex-shrink: 1;
+}
+
+.cepi-table__footer-start .cepi-table__ajuda,
+.cepi-table__footer-start a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.6875rem;
+  line-height: 1.2;
+  font-weight: 500;
+  color: var(--text-3);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.cepi-table__footer-start .cepi-table__ajuda:hover,
+.cepi-table__footer-start a:hover {
+  color: var(--green);
+}
+
+.cepi-table__footer-start .pi {
+  font-size: 0.75rem;
+}
+
+.cepi-table__pager {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.45rem;
+  min-width: 0;
+  margin-left: auto;
+  height: 100%;
+}
+
+.cepi-table__pager-total {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  white-space: nowrap;
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.cepi-table__pager-total strong {
+  color: var(--text-2);
+  font-weight: 650;
+}
+
+.cepi-table__pager-sep {
+  color: var(--text-4);
+  font-weight: 500;
+}
+
+.cepi-table__pager-divider {
+  width: 1px;
+  height: 1rem;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+.cepi-table__pager-rows {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.cepi-table__pager-rows-label {
+  color: var(--text-3);
+  font-size: 0.6875rem;
+  letter-spacing: 0.02em;
+}
+
+.cepi-table__pager-select {
+  width: 3.35rem !important;
+  min-width: 3.35rem !important;
+  height: 1.5rem !important;
+  min-height: 1.5rem !important;
+  max-height: 1.5rem !important;
+  padding-inline: 0.3rem 0.2rem !important;
+  font-size: 0.75rem !important;
+}
+
+.cepi-table__pager-select svg {
+  width: 0.8rem !important;
+  height: 0.8rem !important;
+}
+
+.cepi-table__pager-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.cepi-table__pager-nav .cepi-btn {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  min-width: 1.5rem !important;
+  min-height: 1.5rem !important;
+  padding: 0 !important;
+}
+
+.cepi-table__pager-page {
+  min-width: 2.5rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-1);
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+/* ── 7. Modais (.cepi-modal) ─────────────────────────────── */
+.cepi-modal-overlay {
+  background: color-mix(in srgb, var(--text-1) 28%, transparent);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+/* Fallback leve de rota (Suspense) — sem vinheta de boot */
+.route-fallback {
+  display: grid;
+  place-items: center;
+  min-height: 40vh;
+  padding: 2rem;
+}
+
+.route-fallback__spin {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid color-mix(in srgb, var(--green, #2563eb) 25%, transparent);
+  border-top-color: var(--green, #2563eb);
+  border-radius: 50%;
+  animation: route-fallback-spin 0.7s linear infinite;
+}
+
+@keyframes route-fallback-spin {
+  to { transform: rotate(360deg); }
+}
+
+.cepi-modal {
+  left: 50%;
+  top: 50%;
+  width: min(520px, 94vw);
+  max-height: 90vh;
+  transform: translate(-50%, -50%);
+  border-radius: var(--fr);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--cepi-shadow-modal);
+}
+
+.cepi-modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  padding: var(--sp-5) var(--sp-6);
+  border-bottom: 1px solid var(--border);
+  font-size: var(--font-md);
+  font-weight: 700;
+  color: var(--text-1);
+}
+
+.cepi-modal__body {
+  padding: var(--sp-6);
+  overflow: auto;
+}
+
+.cepi-modal__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--sp-3);
+  padding: var(--sp-5) var(--sp-6);
+  border-top: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+/* Sheet lateral */
+.cepi-sheet {
+  border-color: var(--border);
+  box-shadow: var(--cepi-shadow-modal);
+  height: 100dvh;
+  max-height: 100dvh;
+  top: 0;
+  bottom: 0;
+}
+
+/* Telas pequenas: sidebars laterais com formulário ocupam 100% da altura */
+@media (max-width: 767px) {
+  .cepi-sheet:not(.landing-cadastro-panel) {
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    min-height: 100dvh !important;
+    top: 0 !important;
+    bottom: 0 !important;
+  }
+
+  .cepi-sheet:not(.landing-cadastro-panel) .cepi-sheet__body {
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+
+  /* Formulários (painel-layout / form-rodape): 100% largura + altura, rodapé fixo */
+  .cepi-sheet:has(.painel-layout):not(.landing-cadastro-panel),
+  .cepi-sheet:has(.form-rodape):not(.landing-cadastro-panel),
+  .cepi-sheet:has(.painel-simples):not(:has(.sidebar-extras)):not(.landing-cadastro-panel) {
+    width: 100% !important;
+    max-width: 100vw !important;
+    left: 0 !important;
+    right: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+    height: 100% !important;
+    height: 100dvh !important;
+    max-height: 100% !important;
+    max-height: 100dvh !important;
+    min-height: 100% !important;
+    min-height: 100dvh !important;
+    top: 0 !important;
+    bottom: 0 !important;
+  }
+
+  .cepi-sheet:has(.painel-layout):not(.landing-cadastro-panel) .cepi-sheet__body,
+  .cepi-sheet:has(.form-rodape):not(.landing-cadastro-panel) .cepi-sheet__body,
+  .cepi-sheet:has(.painel-simples):not(:has(.sidebar-extras)):not(.landing-cadastro-panel) .cepi-sheet__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+    height: 100%;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .cepi-sheet:not(.landing-cadastro-panel) .painel-layout,
+  .cepi-sheet:not(.landing-cadastro-panel) .painel-simples {
+    flex: 1 1 auto;
+    height: 100%;
+    min-height: 0;
+  }
+}
+
+.cepi-sheet__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  border-bottom: 1px solid var(--border);
+  font-weight: 700;
+  font-size: var(--font-md);
+  height: var(--cabecalho-altura);
+  background-color: var(--surface-2);
+  padding: 10px;
+}
+.cepi-sheet__header .cepi-sheet__close,
+.cepi-sheet__header > button {
+  width: 2rem !important;
+  height: 2rem !important;
+  min-width: 2rem !important;
+  padding: 0 !important;
+  border-radius: var(--fr) !important;
+  border: 1px solid var(--border) !important;
+  background: var(--surface) !important;
+  color: var(--text-2) !important;
+  box-shadow: none !important;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease !important;
+}
+.cepi-sheet__header .cepi-sheet__close:hover,
+.cepi-sheet__header > button:hover {
+  background: var(--danger-soft) !important;
+  border-color: var(--danger-line) !important;
+  color: var(--danger) !important;
+}
+.cepi-sheet__header .cepi-sheet__close svg,
+.cepi-sheet__header > button svg {
+  width: 1rem;
+  height: 1rem;
+}
+.cepi-sheet__body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 0 0.4rem;
+}
+
+.cepi-sheet__body--flush {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.cepi-table-actions .cepi-btn {
+  height: 1.5rem;
+  width: 1.5rem;
+  padding: 0;
+  font-size: var(--btn-icon-sm);
+  color: var(--text-3) !important;
+  background: transparent !important;
+  border-color: transparent !important;
+}
+
+.cepi-table-actions .cepi-btn:hover:not(:disabled) {
+  color: var(--text-1) !important;
+  background: var(--surface-hover, var(--table-row-hover)) !important;
+}
+
+.cepi-table-actions .cepi-btn.p-button-danger,
+.cepi-table-actions .cepi-btn.cepi-btn--danger {
+  color: var(--danger) !important;
+}
+
+.cepi-table-actions .cepi-btn.p-button-danger:hover:not(:disabled),
+.cepi-table-actions .cepi-btn.cepi-btn--danger:hover:not(:disabled) {
+  color: var(--danger) !important;
+  background: var(--danger-soft) !important;
+}
+
+.cepi-table-actions .cepi-btn.p-button-danger:disabled,
+.cepi-table-actions .cepi-btn.cepi-btn--danger:disabled {
+  color: var(--text-4) !important;
+  opacity: 0.55;
+}
+
+.cepi-table-actions .cepi-btn .pi,
+.cepi-table-actions .cepi-btn > i[class*='pi-'] {
+  font-size: var(--btn-icon-sm) !important;
+  line-height: 1;
+  color: inherit !important;
+}
+
+.cepi-table-actions .cepi-btn svg {
+  width: var(--btn-icon-sm) !important;
+  height: var(--btn-icon-sm) !important;
+}
+
+/* Status em células — largura fixa (Crítico, Baixo, Alto, etc.) */
+.cepi-tag--cell-status {
+  display: inline-flex !important;
+  width: var(--table-status-tag-w);
+  max-width: var(--table-status-tag-w);
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+  padding-left: 0.25rem !important;
+  padding-right: 0.25rem !important;
+  font-size: 0.6875rem !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+button.pendencias-link {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: var(--radius, 4px);
+}
+button.pendencias-link:hover .cepi-tag {
+  filter: brightness(0.97);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--green) 35%, transparent);
+}
+button.pendencias-link:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--green) 55%, transparent);
+  outline-offset: 2px;
+}
+
+.cepi-table__td--status {
+  text-align: center;
+}
+
+.cepi-table__th--status {
+  text-align: center !important;
+}
+
+.cepi-table__th--status .cepi-table__th-inner {
+  justify-content: center;
+}
+
+/* Linhas com destaque suave conforme status do prazo */
+.cepi-table__row.cepi-table__row--vencido .cepi-table__td,
+.cepi-table__row.cepi-table__row--vencido:nth-child(even) .cepi-table__td {
+  color: color-mix(in srgb, var(--danger) 82%, var(--table-text));
+  background: color-mix(in srgb, var(--danger-soft) 65%, var(--surface));
+}
+
+.cepi-table__row.cepi-table__row--pendente .cepi-table__td,
+.cepi-table__row.cepi-table__row--pendente:nth-child(even) .cepi-table__td {
+  color: color-mix(in srgb, var(--info) 78%, var(--table-text));
+  background: color-mix(in srgb, var(--info-soft) 70%, var(--surface));
+}
+
+.cepi-table__row.cepi-table__row--iminente .cepi-table__td,
+.cepi-table__row.cepi-table__row--iminente:nth-child(even) .cepi-table__td {
+  color: color-mix(in srgb, var(--warning) 80%, var(--table-text));
+  background: color-mix(in srgb, var(--warning-soft) 70%, var(--surface));
+}
+
+.cepi-table__row.cepi-table__row--vencido:hover .cepi-table__td {
+  background: color-mix(in srgb, var(--danger-soft) 88%, var(--table-row-hover));
+}
+
+.cepi-table__row.cepi-table__row--pendente:hover .cepi-table__td {
+  background: color-mix(in srgb, var(--info-soft) 88%, var(--table-row-hover));
+}
+
+.cepi-table__row.cepi-table__row--iminente:hover .cepi-table__td {
+  background: color-mix(in srgb, var(--warning-soft) 88%, var(--table-row-hover));
+}
+
+.cepi-table-shell--no-hover .cepi-table__row:hover .cepi-table__td {
+  background: inherit;
+}
+
+/* ── 8. Bridge legado ─────────────────────────────────────── */
+.formSubmitBtnNative {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  height: var(--btn-h);
+  padding: 0 0.75rem;
+  border-radius: var(--fr);
+  border: 1px solid var(--green);
+  background: var(--green);
+  color: #fff;
+  font-family: inherit;
+  font-size: var(--btn-fs);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
+}
+
+.formSubmitBtnNative:hover:not(:disabled) {
+  background: var(--green-hover);
+  border-color: var(--green-hover);
+}
+
+.formSubmitBtnNative.is-loading {
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+/* Auth pages (Esqueci senha / Definir senha) */
+.auth-form-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.25rem;
+  background: var(--canvas);
+}
+
+.auth-form-card {
+  width: min(420px, 100%);
+  padding: 2rem 1.75rem;
+  border-radius: var(--fr);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--cepi-shadow-md);
+}
+
+.auth-form-card-logo {
+  display: block;
+  height: 2.5rem;
+  width: auto;
+  margin: 0 auto 1.25rem;
+}
+
+.auth-form-card-title {
+  margin: 0 0 0.35rem;
+  text-align: center;
+  font-size: var(--font-lg);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-1);
+}
+
+.auth-form-card-desc {
+  margin: 0 0 1.5rem;
+  text-align: center;
+  font-size: var(--font-sm);
+  line-height: 1.55;
+  color: var(--text-3);
+}
+
+/* Spinner */
+.pi-spin { animation: pi-spin 0.8s linear infinite; }
+@keyframes pi-spin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .cepi-btn:active:not(:disabled) {
+    transform: none;
+  }
+}

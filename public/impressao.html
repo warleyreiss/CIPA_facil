@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      (function () {
+        var html = null;
+        try {
+          html = sessionStorage.getItem('cepi_impressao_html');
+          sessionStorage.removeItem('cepi_impressao_html');
+        } catch (_) {}
+        if (!html) {
+          document.body.textContent = 'Nada para imprimir.';
+          return;
+        }
+        document.open();
+        document.write(html);
+        document.close();
+      })();
+    </script>
+  </body>
+</html>
